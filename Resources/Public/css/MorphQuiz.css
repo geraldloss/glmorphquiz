@@ -1,0 +1,76 @@
+/* the main div for the whole extension */
+div.glmorphqiz_cls_main_frame{
+
+}
+
+/* the whole table for the input word */
+table.glmorphquiz_cls_input_word_table{
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+
+/* class of a row of the input word */
+tr.glmorphquiz_cls_input_word_row{
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+
+/* the fist collumn with the arrow */
+td.glmorphquiz_cls_word_first{
+    text-align: left;
+    vertical-align: middle;
+	margin: 0px;
+	padding: 1px;
+	border: 0px;
+	box-sizing: content-box;
+}
+
+/* class of a collumn of the input word */
+td.glmorphquiz_cls_input_word_col{
+	margin: 0px;
+	padding: 1px;
+	border: 0px;
+}
+
+/* class of a collumn of the send button */
+td.glmorphquiz_cls_button_word_col{
+	margin: 0px;
+	padding: 0px;
+	padding-left: 5px;
+	padding-right: 5px;
+	border: 0px;
+}
+
+/* class of the input fields */
+input.glmorphquiz_cls_input_field{
+    border: 1px solid black;
+    padding: 1px;
+}
+
+/* class of the read only input fields */
+input.glmorphquiz_cls_input_field_ro{
+    border: 1px solid #E1E1E1;
+  	padding: 1px;
+}
+
+/* class of the arrow on the left */
+img.glmorphquiz_cls_arrow {
+    vertical-align: middle;
+}
+
+/* Messages at the bottom of the game */
+div.glmorphquiz_cls_result{
+    margin-top: 20px;
+}
+
+/* for the flash messages over the quiz game */
+div.typo3-messages{
+	margin-bottom: 10px;
+}
+
+/* the div container for the final text at the end of the game */
+div.glmorphquiz_cls_finaltext{
+    margin-top: 20px;
+}

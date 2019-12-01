@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-03-08T00:38:36Z" product-name="glmorphquiz">
+		<header/>
+		<body>
+
+			<trans-unit id="settings.firstWord.alttitle">
+				<source><![CDATA[The first word of the morphing game]]></source>
+			</trans-unit>
+			<trans-unit id="settings.firstWord.description">
+				<source><![CDATA[Here you must declaire the first word of the morphing game. You can only select words with the flag for the first word.]]></source>
+			</trans-unit>
+
+			<trans-unit id="settings.width.description">
+				<source><![CDATA[Width per letter. If there are because of the edit mask only one letter in one box allowed, then this is the actual width of the box around every letter. If there are for instance 3 letters allowed, than the width of the box is three times of this value.]]></source>
+			</trans-unit>
+
+			<trans-unit id="settings.height.description">
+				<source><![CDATA[Here you can define the height of the box around every letter. This value should be set in dependence of the font size.]]></source>
+			</trans-unit>
+
+			<trans-unit id="settings.cssFile.description">
+				<source><![CDATA[Define alternate css file for changing the default css settings. Click here for details.]]></source>
+			</trans-unit>
+			<trans-unit id="settings.cssFile.details">
+				<source><![CDATA[If you like to create your own layout for the morphing quiz, then copy the file MorphQuiz.css from the folder /typo3conf/ext/glmorphquiz/Resources/Public/css/ in any place under /fileadmin/ and customize it for your own needs. Never alter the name of the classes. Only the content of the classes is allowed for changings. 
+      									Then describe the path to this file from the fileadmin-folder in this field. For instance if you have place your own css file in the folder /fileadmin/myHomepage/myownMorphQuiz.css then you have to write myHomepage/myownMorphQuiz.css into this field. If you leave it empty, then this plugin use the default css file. Should you try to set more then one morphing quiz on one page, then you need to place in every quiz the same alternate CSS file. Otherwise would win alway the css file of the last quiz.]]>
+				</source>
+			</trans-unit>
+
+			<trans-unit id="settings.fontsize.description">
+				<source><![CDATA[Size of the font for all inputboxes. This can be overruled by the setting in the word itself. Default is 15.]]></source>
+			</trans-unit>
+			<trans-unit id="settings.height_letter.description">
+				<source><![CDATA[Height of a letter for all inputboxes. This can be overruled by the setting in the word itself. Default is 25]]></source>
+			</trans-unit>
+			<trans-unit id="settings.width_letter.description">
+				<source><![CDATA[Is in this letter box more than one letter, then the width is a multiply of the count of the letters. Default is 12. Click here for details.]]></source>
+			</trans-unit>
+			<trans-unit id="settings.width_letter.seeAlso">
+				<source>tt_content.pi_flexform.glmorphquiz_pi1.list:settings.width_letter_offset</source>
+			</trans-unit>
+			<trans-unit id="settings.width_letter_offset.description">
+				<source><![CDATA[This offset is added to the width of a letter box. This can be overruled by the setting in the word itself. Default is 3. Click here for details.]]></source>
+			</trans-unit>
+			<trans-unit id="settings.width_letter_offset.details">
+				<source><![CDATA[The width of a letter box is the sum of the offset with the multiply of the count of letters in this box with the width of a single letter. Example: If the offset is 3 and the widht is 12 than is the total width of a inputbox with two letter 27 = 3 + (2*12)]]></source>
+			</trans-unit>
+			<trans-unit id="settings.firstcol_width.description">
+				<source><![CDATA[Width of the first collumn with the arrow. Default is 50.]]></source>
+			</trans-unit>
+			<trans-unit id="settings.arrow_width.description">
+				<source><![CDATA[With of the arrow. Change this value only, if you have changed the image of the arrow. Default is 30.]]></source>
+			</trans-unit>
+			<trans-unit id="settings.animation_speed.description">
+				<source><![CDATA[Change the duration of the movement of the arrow in the beginning in Milliseconds. This can be overruled by the setting in the word itself. Default is 500.]]></source>
+			</trans-unit>
+			<trans-unit id="settings.points.description">
+				<source><![CDATA[Points for a correct answer. This can be overruled by the setting in the word itself. Set 0 if you don't want points.]]></source>
+			</trans-unit>
+			<trans-unit id="settings.minus_points.description">
+				<source><![CDATA[Points for a wrong answer. This can be overruled by the setting in the word itself. Set 0 if you don't want minus points.]]></source>
+			</trans-unit>
+			<trans-unit id="settings.arrowFile.description">
+				<source><![CDATA[If you like to change the image with the arrow in the beginning of the editboxes, then you can enter the path to this file here. Click here for details.]]></source>
+			</trans-unit>
+			<trans-unit id="settings.arrowFile.details">
+				<source><![CDATA[Place the new file anywhere under the fileadmin folder and enter the path with the beginning from there. Example: If you have placed the file in the folder "fileadmin/myimages/new_arrow.gif" then you have to enter the path "myimages/new_arrow.gif"]]></source>
+			</trans-unit>
+			<trans-unit id="settings.arrowFile.seeAlso">
+				<source>tt_content.pi_flexform.glmorphquiz_pi1.list:settings.arrow_width</source>
+			</trans-unit>
+			<trans-unit id="settings.has_finishtext.description">
+				<source><![CDATA[Text which will be shown at the end of the game. Click here for details.]]></source>
+			</trans-unit>
+			<trans-unit id="settings.has_finishtext.details">
+				<source><![CDATA[You have to create one ore more finishing texts in the list view of a folder. This texts can you assign here. Depending on the score at the end of the game, one of this texts will be shown.]]></source>
+			</trans-unit>
+			<trans-unit id="settings.show_last.description">
+				<source><![CDATA[Show not only the first word. Show also the last word and let the player guess all words in between. Otherwise only the first word is given in the beginning.]]></source>
+			</trans-unit>
+
+
+			<trans-unit id="settings.xxx.alttitle">
+				<source><![CDATA[]]></source>
+			</trans-unit>
+			<trans-unit id="settings.xxx.description">
+				<source><![CDATA[]]></source>
+			</trans-unit>
+			<trans-unit id="settings.xxx.details">
+				<source><![CDATA[]]></source>
+			</trans-unit>
+
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-03-08T00:38:36Z" product-name="glmorphquiz">
+		<header/>
+		<body>
+			<trans-unit id="tx_glmorphquiz_domain_model_word">
+				<source><![CDATA[Word]]></source>
+				<target><![CDATA[Wort]]></target>
+			</trans-unit>
+			<trans-unit id="tx_glmorphquiz_domain_model_word.name">
+				<source><![CDATA[Name]]></source>
+				<target><![CDATA[Name]]></target>
+			</trans-unit>
+			<trans-unit id="tx_glmorphquiz_domain_model_word.value">
+				<source><![CDATA[Value]]></source>
+				<target><![CDATA[Inhalt]]></target>
+			</trans-unit>
+			<trans-unit id="tx_glmorphquiz_domain_model_word.next_word">
+				<source><![CDATA[Next Word]]></source>
+				<target><![CDATA[Nächstes Wort]]></target>
+			</trans-unit>
+			<trans-unit id="tx_glmorphquiz_domain_model_word.mask">
+				<source><![CDATA[Mask]]></source>
+				<target><![CDATA[Maske]]></target>
+			</trans-unit>
+			<trans-unit id="tx_glmorphquiz_domain_model_word.start">
+				<source><![CDATA[First word]]></source>
+				<target><![CDATA[Erstes Wort]]></target>
+			</trans-unit>
+			<trans-unit id="tx_glmorphquiz_domain_model_word.fontsize">
+				<source><![CDATA[Fontsize]]></source>
+				<target><![CDATA[Fontgröße]]></target>
+			</trans-unit>
+			<trans-unit id="tx_glmorphquiz_domain_model_word.heigth_letter">
+				<source><![CDATA[Height of a letter inputbox]]></source>
+				<target><![CDATA[Höhe der Buchstabeneingabebox]]></target>
+			</trans-unit>
+			<trans-unit id="tx_glmorphquiz_domain_model_word.width_letter">
+				<source><![CDATA[Width of a single letter for the inputbox]]></source>
+				<target><![CDATA[Breite eines einzelnen Buchstabens der Buchstabeneingabebox]]></target>
+			</trans-unit>
+			<trans-unit id="tx_glmorphquiz_domain_model_word.width_letter_offset">
+				<source><![CDATA[Offset of the width of the letter inputbox]]></source>
+				<target><![CDATA[Offset der Buchstabeneingabebox]]></target>
+			</trans-unit>
+			<trans-unit id="tx_glmorphquiz_domain_model_word.firstcol_width">
+				<source><![CDATA[Width of the first collumn with the arrow]]></source>
+				<target><![CDATA[Breite der ersten Spalte mit dem Pfeil]]></target>
+			</trans-unit>
+			<trans-unit id="tx_glmorphquiz_domain_model_word.arrow_width">
+				<source><![CDATA[Width of the image with the arrow]]></source>
+				<target><![CDATA[Breite des Bildes mit dem Pfeil]]></target>
+			</trans-unit>
+			<trans-unit id="tx_glmorphquiz_domain_model_word.animation_speed">
+				<source><![CDATA[Speed of the arrow animation in milliseconds]]></source>
+				<target><![CDATA[Geschwindigkeit der Animation mit dem Pfeil in Millisekunden]]></target>
+			</trans-unit>
+			<trans-unit id="tx_glmorphquiz_domain_model_word.points">
+				<source><![CDATA[Points for the right answer]]></source>
+				<target><![CDATA[Punkte für eine richtige Antwort]]></target>
+			</trans-unit>
+			<trans-unit id="tx_glmorphquiz_domain_model_word.minus_points">
+				<source><![CDATA[Minus points for a wrong answer]]></source>
+				<target><![CDATA[Minuspunkte für eine falsche Antwort]]></target>
+			</trans-unit>
+			<trans-unit id="tx_glmorphquiz_domain_model_word.tabpoints">
+				<source><![CDATA[Settings for points]]></source>
+				<target><![CDATA[Punkteeinstellungen]]></target>
+			</trans-unit>
+			<trans-unit id="tx_glmorphquiz_domain_model_word.tabadvanced">
+				<source><![CDATA[Advanced settings]]></source>
+				<target><![CDATA[Erweitert]]></target>
+			</trans-unit>
+			<trans-unit id="tx_glmorphquiz_domain_model_word.empty">
+				<source><![CDATA[]]></source>
+				<target><![CDATA[]]></target>
+			</trans-unit>
+
+
+			<trans-unit id="tx_glmorphquiz_domain_model_finishingtext">
+				<source><![CDATA[Finishingtext]]></source>
+				<target><![CDATA[Abschlusstext]]></target>
+			</trans-unit>
+			<trans-unit id="tx_glmorphquiz_domain_model_finishingtext.name">
+				<source><![CDATA[Name]]></source>
+				<target><![CDATA[Name]]></target>
+			</trans-unit>
+			<trans-unit id="tx_glmorphquiz_domain_model_finishingtext.minpoints">
+				<source><![CDATA[Minimum points]]></source>
+				<target><![CDATA[Mindestpunktzahl]]></target>
+			</trans-unit>
+			<trans-unit id="tx_glmorphquiz_domain_model_finishingtext.text">
+				<source><![CDATA[Finishing Text]]></source>
+				<target><![CDATA[Abschlusstext]]></target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

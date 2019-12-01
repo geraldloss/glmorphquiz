@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-03-22T15:56:11Z" product-name="glmorphquiz">
+		<header/>
+		<body>
+
+			<trans-unit id="minpoints.description">
+				<source><![CDATA[Minimum points for showing this finishing text. Click here for more details]]></source>
+				<target><![CDATA[Mindestanzahl an Punkten um den Abschlusstext anzuzeigen. Klicken Sie hier für mehr Details]]></target>
+			</trans-unit>
+			<trans-unit id="minpoints.details">
+				<source><![CDATA[If the player has reached this amount of points at minum and there is no other finishing text with a higher minimum points amount, which has fullfilled this condition, than the this finishing text will be shown at the end of the game. Precondition: You need to assign this finishing text to the morphing quiz game in the flexform of the frontend plugin.]]></source>
+				<target><![CDATA[Wenn der Spieler diese Mindestpunktzahl erreicht hat und es keinen weiteren Abschlusstext gibt mit einer höheren Mindestpunktzahl, der ebenfalls diese Bedingung erfüllt hat, dann wird dieser Abschlusstext am Ende des Spiels angezeigt. Vorbedingung: Dieser Abschlusstext muss dem Verwandlungsrätsel im Flexform des Frontend Plugins zugeordnet werden.]]></target>
+			</trans-unit>
+			<trans-unit id="text.description">
+				<source><![CDATA[Text to be displayed at the end of the game, if the minimum points are reached.]]></source>
+				<target><![CDATA[Text der am Ende des Spiels Angezeigt wird, wenn die Mindestpunktzahl erreicht wurde.]]></target>
+			</trans-unit>
+			<trans-unit id="text.seeAlso">
+				<source>tx_glmorphquiz_domain_model_finishingtext:minpoints</source>
+				<target>tx_glmorphquiz_domain_model_finishingtext:minpoints</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-03-08T00:38:36Z" product-name="glmorphquiz">
+		<header/>
+		<body>
+			<trans-unit id="flexform.plugin.general.sheet_title">
+				<source><![CDATA[Basic configurations]]></source>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.firstWord">
+				<source><![CDATA[The first word of the morphing game]]></source>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.fontsize">
+				<source><![CDATA[Fontsize]]></source>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.width">
+				<source><![CDATA[Width for the box of every letter.]]></source>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.height">
+				<source><![CDATA[Height of the box around every letter]]></source>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.cssFile">
+				<source><![CDATA[Alternate css file]]></source>
+			</trans-unit>
+
+			<trans-unit id="flexform.plugin.advanced.sheet_title">
+				<source><![CDATA[Advanced Settings]]></source>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.heigth_letter">
+				<source><![CDATA[Height of the letter inputboxes]]></source>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.width_letter">
+				<source><![CDATA[Width of a single letter for the inputboxes]]></source>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.width_letter_offset">
+				<source><![CDATA[Offset of the width of the letter inputboxes]]></source>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.firstcol_width">
+				<source><![CDATA[Width of the first collumn with the arrow]]></source>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.arrow_width">
+				<source><![CDATA[Width of the image with the arrow]]></source>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.arrowFile">
+				<source><![CDATA[Alternate arrow image file]]></source>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.animation_speed">
+				<source><![CDATA[Speed of the arrow animation in milliseconds]]></source>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.points">
+				<source><![CDATA[Points for the right answer]]></source>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.minus_points">
+				<source><![CDATA[Minus points for the wrong answer]]></source>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.has_finishtext">
+				<source><![CDATA[The final texts at the end of the game]]></source>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.show_last">
+				<source><![CDATA[Show the last word]]></source>
+			</trans-unit>
+
+			<trans-unit id="">
+				<source><![CDATA[]]></source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

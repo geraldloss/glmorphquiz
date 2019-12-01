@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-03-08T00:38:36Z" product-name="glmorphquiz">
+		<header/>
+		<body>
+			<trans-unit id="flexform.plugin.general.sheet_title">
+				<source><![CDATA[Basic configurations]]></source>
+				<target><![CDATA[Standardeinstellungen]]></target>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.firstWord">
+				<source><![CDATA[The first word of the morphing game]]></source>
+				<target><![CDATA[Das erste Wort des Verwandlungsrätsels]]></target>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.fontsize">
+				<source><![CDATA[Fontsize]]></source>
+				<target><![CDATA[Schriftgröße]]></target>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.width">
+				<source><![CDATA[Width for the box of every letter.]]></source>
+				<target><![CDATA[Breite des Kastens um jeden Buchstaben]]></target>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.height">
+				<source><![CDATA[Height of the box around every letter]]></source>
+				<target><![CDATA[Höhe des Kastens um jeden Buchstaben]]></target>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.cssFile">
+				<source><![CDATA[Alternate css file]]></source>
+				<target><![CDATA[Alternative CSS-Datei]]></target>
+			</trans-unit>
+
+			<trans-unit id="flexform.plugin.advanced.sheet_title">
+				<source><![CDATA[Advanced Settings]]></source>
+				<target><![CDATA[Erweitert Einstellungen]]></target>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.heigth_letter">
+				<source><![CDATA[Height of the letter inputboxes]]></source>
+				<target><![CDATA[Höhe der Buchstabeneingabeboxen]]></target>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.width_letter">
+				<source><![CDATA[Width of a single letter for the inputboxes]]></source>
+				<target><![CDATA[Breite eines einzelnen Buchstabens der Buchstabeneingabeboxen]]></target>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.width_letter_offset">
+				<source><![CDATA[Offset of the width of the letter inputboxes]]></source>
+				<target><![CDATA[Offset der Buchstabeneingabeboxen]]></target>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.firstcol_width">
+				<source><![CDATA[Width of the first collumn with the arrow]]></source>
+				<target><![CDATA[Breite der ersten Spalte mit dem Pfeil]]></target>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.arrow_width">
+				<source><![CDATA[Width of the image with the arrow]]></source>
+				<target><![CDATA[Breite des Bildes mit dem Pfeil]]></target>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.arrowFile">
+				<source><![CDATA[Alternate arrow image file]]></source>
+				<target><![CDATA[Alternative Bilddatei mit dem Pfeil]]></target>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.animation_speed">
+				<source><![CDATA[Speed of the arrow animation in milliseconds]]></source>
+				<target><![CDATA[Geschwindigkeit der Animation mit dem Pfeil in Millisekunden]]></target>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.points">
+				<source><![CDATA[Points for the right answer]]></source>
+				<target><![CDATA[Punkte für eine richtige Antwort]]></target>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.minus_points">
+				<source><![CDATA[Minus points for the wrong answer]]></source>
+				<target><![CDATA[Minuspunkte für die falsche Antwort]]></target>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.has_finishtext">
+				<source><![CDATA[The final texts at the end of the game]]></source>
+				<target><![CDATA[The Schlusstexte am Ende des Spiels]]></target>
+			</trans-unit>
+			<trans-unit id="flexform.plugin.general.show_last">
+				<source><![CDATA[Show the last word]]></source>
+				<target><![CDATA[Zeige das letzte Wort]]></target>
+			</trans-unit>
+
+			<trans-unit id="">
+				<source><![CDATA[]]></source>
+				<target><![CDATA[]]></target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

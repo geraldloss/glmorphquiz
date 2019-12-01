@@ -1,0 +1,22 @@
+# ==============================================
+# Constants configuration for EXT:glmorphquiz
+# ==============================================
+plugin.tx_glmorphquiz {
+	# the vendor name
+	vendorName = Loss
+	# the name of this extension
+	extensionname = glmorphquiz
+
+	view {
+		# cat=plugin.tx_glmorphquiz/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:glmorphquiz/Resources/Private/Templates/
+		# cat=plugin.tx_glmorphquiz/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:glmorphquiz/Resources/Private/Partials/
+		# cat=plugin.tx_glmorphquiz/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:glmorphquiz/Resources/Private/Layouts/
+	}
+	libraries{
+		#cat=plugin.tx_glcrossword/libraries; type=boolean; label=LLL:EXT:glcrossword/locallang.xlf:glcrossword.constants.inlcudeJQuery
+		inlcudeJQuery = true
+	}
+}

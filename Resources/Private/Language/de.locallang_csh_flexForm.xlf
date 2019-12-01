@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-03-08T00:38:36Z" product-name="glmorphquiz">
+		<header/>
+		<body>
+
+			<trans-unit id="settings.firstWord.alttitle">
+				<source><![CDATA[The first word of the morphing game]]></source>
+				<target><![CDATA[Das erste Wort des Verwandlungsrätsels]]></target>
+			</trans-unit>
+			<trans-unit id="settings.firstWord.description">
+				<source><![CDATA[Here you must declaire the first word of the morphing game. You can only select words with the flag for the first word.]]></source>
+				<target><![CDATA[Hier müssen Sie das erste Wort des Verwandlungsrätsels angeben. Sie können nur Worter mit aktivierten Flag für das erste Wort auswählen.]]></target>
+			</trans-unit>
+
+			<trans-unit id="settings.width.description">
+				<source><![CDATA[Width per letter. If there are because of the edit mask only one letter in one box allowed, then this is the actual width of the box around every letter. If there are for instance 3 letters allowed, than the width of the box is three times of this value.]]></source>
+				<target><![CDATA[Breite je Buchstabe. Wenn über die Editiermaske nur ein Buchstabe je Kästchen erlaubt ist, dann ist das die tatsächliche Breite der Box. Wenn dort z. B. drei Buchstaben erlaubt sind, dann ist die Breite des umrahmenden Kasten drei mal dieser Wert]]></target>
+			</trans-unit>
+
+			<trans-unit id="settings.height.description">
+				<source><![CDATA[Here you can define the height of the box around every letter. This value should be set in dependence of the font size.]]></source>
+				<target><![CDATA[Hier können Sie die Höhe des Kastens um jeden Buchstaben definieren. Dieser Wert sollte in Abhängkeit von der Schriftgröße gesetzt werden.]]></target>
+			</trans-unit>
+
+			<trans-unit id="settings.cssFile.description">
+				<source><![CDATA[Define alternate css file for changing the default css settings. Click here for details.]]></source>
+				<target><![CDATA[Hier kann eine alternative css-Datei eingestellt werden. Klicken Sie hier für weitere Details.]]></target>
+			</trans-unit>
+			<trans-unit id="settings.cssFile.details">
+				<source><![CDATA[If you like to create your own layout for the morphing quiz, then copy the file MorphQuiz.css from the folder /typo3conf/ext/glmorphquiz/Resources/Public/css/ in any place under /fileadmin/ and customize it for your own needs. Never alter the name of the classes. Only the content of the classes is allowed for changings. 
+      									Then describe the path to this file from the fileadmin-folder in this field. For instance if you have place your own css file in the folder /fileadmin/myHomepage/myownMorphQuiz.css then you have to write myHomepage/myownMorphQuiz.css into this field. If you leave it empty, then this plugin use the default css file. Should you try to set more then one morphing quiz on one page, then you need to place in every quiz the same alternate CSS file. Otherwise would win alway the css file of the last quiz.]]>
+				</source>
+				<target><![CDATA[Wenn Sie vorhaben das Layout des Kreuzworträtsels Ihren eigenen Vorstellungen anzupassen, dann kopieren sie die Datei MorphQuiz.css aus dem Verzeichnis /typo3conf/ext/glmorphquiz/Resources/Public/css/ in irgend einen Ort unterhalb von /fileadmin/ und passen Sie diese Ihren Bedürfnissen an. Achtung! Niemals die Namen der Klassen ändern. Nur das Ändern der Inhalte der Klassen ist erlaubt.
+      					         Danach können Sie den Pfad, vom fileadmin-Verzeichnis aus, in dieses Feld eintragen. Z. B. wenn Sie eine eigenen CSS-Datei im Verzeichnis /fileadmin/myHomepage/myOwnMorphQuiz.css abgelegt haben, dann schreiben Sie myHomepage/myOwnMorphQuiz.css in dieses Feld. Wenn Sie dieses Feld leer lassen, dann wird wieder die Standard CSS-Datei gezogen. Sollten Sie mehrere Verwandlungsrätsel auf eine Seite setzen, dann müssen Sie überall die selbe alternative CSS-Datei einsetzen. Ansonsten würde immer die CSS-Datei des letzten Rätsels gewinnen.]]></target>
+			</trans-unit>
+
+			<trans-unit id="settings.fontsize.description">
+				<source><![CDATA[Size of the font for all inputboxes. This can be overruled by the setting in the word itself.]]></source>
+				<target><![CDATA[Größe des Fonts in der Buchstabeneingabebox. Diese Regel kann durch die Eingabe in dem Wort selber übersteuert werden. Voreinstellung ist 15.]]></target>
+			</trans-unit>
+			<trans-unit id="settings.height_letter.description">
+				<source><![CDATA[Height of a letter for all inputboxes. This can be overruled by the setting in the word itself. Default is 25]]></source>
+				<target><![CDATA[Höhe der Buchstabeneingabebox. Diese Regel kann durch die Eingabe in dem Wort selber übersteuert werden. Voreinstellung ist 25]]></target>
+			</trans-unit>
+			<trans-unit id="settings.width_letter.description">
+				<source><![CDATA[Is in this letter box more than one letter, then the width is a multiply of the count of the letters. This can be overruled by the setting in the word itself. Default is 12. Click here for details.]]></source>
+				<target><![CDATA[Wenn in der Buchstabeneingabebox mehr als ein Buchstabe zugelassen ist, dann beträgt die Gesamtbreite der Box den Wert in diesem Feld Multipliziert mit der Anzahl an zugelassenen Buchstaben. Diese Regel kann durch die Eingabe in dem Wort selber übersteuert werden. Voreinstellung ist 12. Klicken Sie hier für Details.]]></target>
+			</trans-unit>
+			<trans-unit id="settings.width_letter.seeAlso">
+				<source>tt_content.pi_flexform.glmorphquiz_pi1.list:settings.width_letter_offset</source>
+				<target>tt_content.pi_flexform.glmorphquiz_pi1.list:settings.width_letter_offset</target>
+			</trans-unit>
+			<trans-unit id="settings.width_letter_offset.description">
+				<source><![CDATA[This offset is added to the width of a letter box. This can be overruled by the setting in the word itself. Default is 3. Click here for details.]]></source>
+				<target><![CDATA[Dieser Offset wird zusätzlich zu der Breite einer Buchstabeneingabebox hinzu addiert. Diese Regel kann durch die Eingabe in dem Wort selber übersteuert werden. Voreinstellung ist 3. Klicken Sie hier für Details.]]></target>
+			</trans-unit>
+			<trans-unit id="settings.width_letter_offset.details">
+				<source><![CDATA[The width of a letter box is the sum of the offset with the multiply of the count of letters in this box with the width of a single letter. Example: If the offset is 3 and the widht is 12 than is the total width of a inputbox with two letter 27 = 3 + (2*12)]]></source>
+				<target><![CDATA[Die Breite einer Buchstabeneingabebox ist die Summe aus dem Offset und dem Produkt mit der Anzahl an Buchstaben in dieser Eingabebox und der Breite für einen Buchstaben. Beispiel: Wenn der Offset 3 beträgt und die Breite eines Buchstabens 12 dann beträgt die gesamtgröße einer Buchstabeneingabebox mit zwei Buchstaben 27 = 3 + (2*12)]]></target>
+			</trans-unit>
+			<trans-unit id="settings.firstcol_width.description">
+				<source><![CDATA[Width of the first collumn with the arrow. Default is 50.]]></source>
+				<target><![CDATA[Breite der ersten Spalte mit dem animierten Pfeil. Voreinstellung ist 50.]]></target>
+			</trans-unit>
+			<trans-unit id="settings.arrow_width.description">
+				<source><![CDATA[With of the arrow. Change this value only if you have changed the image of the arrow. Default is 30.]]></source>
+				<target><![CDATA[Breite des Pfeils. Ändern Sie diesen Wert nur, wenn Sie das Bild mit dem Pfeil geändert haben. Voreinstellung ist 30.]]></target>
+			</trans-unit>
+			<trans-unit id="settings.animation_speed.description">
+				<source><![CDATA[Change the duration of the movement of the arrow in the beginning in Milliseconds. This can be overruled by the setting in the word itself. Default is 500.]]></source>
+				<target><![CDATA[Dauer der Animation des Pfeils am Anfang in Milliskunden. Diese Regel kann durch die Eingabe in dem Wort selber übersteuert werden. Voreinstellung ist 500.]]></target>
+			</trans-unit>
+			<trans-unit id="settings.points.description">
+				<source><![CDATA[Points for a correct answer. This can be overruled by the setting in the word itself. Set 0 if you don't want points.]]></source>
+				<target><![CDATA[Punkte für eine richtige Antwort. Diese Regel kann durch die Eingabe in dem Wort selber übersteuert werden. Wenn Sie keine Punkte wollen, setzen Sie diesen Wert auf 0.]]></target>
+			</trans-unit>
+			<trans-unit id="settings.minus_points.description">
+				<source><![CDATA[Points for a wrong answer. This can be overruled by the setting in the word itself. Set 0 if you don't want minus points.]]></source>
+				<target><![CDATA[Punkte für eine falsche Antwort. Diese Regel kann durch die Eingabe in dem Wort selber übersteuert werden. Wenn Sie keine Minuspunkte wollen, setzen Sie diesen Wert auf 0.]]></target>
+			</trans-unit>
+			<trans-unit id="settings.arrowFile.description">
+				<source><![CDATA[If you like to change the image with the arrow in the beginning of the editboxes, then you can enter the path to this file here. Click here for details.]]></source>
+				<target><![CDATA[Wenn Sie das Bild mit dem Pfeil am Anfang der Buchstabeneingabeboxen ändern wollen, dann können Sie hier den Pfad zu der neuen Datei angeben. Klicken Sie hier für mehr Details.]]></target>
+			</trans-unit>
+			<trans-unit id="settings.arrowFile.details">
+				<source><![CDATA[Place the new file anywhere under the fileadmin folder and enter the path with the beginning from there. Example: If you have placed the file in the folder "fileadmin/myimages/new_arrow.gif" then you have to enter the path "myimages/new_arrow.gif"]]></source>
+				<target><![CDATA[Legen Sie die Datei irgendwo unter dem fileadmin Verzeichnis ab und geben Sie den Pfad zu der Datei mit Start von dort an. Beispiel: Wenn Sie die Datei im Verzeichnis "fileadmin/myimages/new_arrow.gif" abgelegt haben, dann müssen hier Sie folgendes angeben "myimages/new_arrow.gif"]]></target>
+			</trans-unit>
+			<trans-unit id="settings.arrowFile.seeAlso">
+				<source>tt_content.pi_flexform.glmorphquiz_pi1.list:settings.arrow_width</source>
+				<target>tt_content.pi_flexform.glmorphquiz_pi1.list:settings.arrow_width</target>
+			</trans-unit>
+			<trans-unit id="settings.has_finishtext.description">
+				<source><![CDATA[Text which will be shown at the end of the game. Click here for details.]]></source>
+				<target><![CDATA[Der Text der am Ende des Spiels gezeigt werden soll. Klicken Sie hier für Details.]]></target>
+			</trans-unit>
+			<trans-unit id="settings.has_finishtext.details">
+				<source><![CDATA[You have to create one ore more finishing texts in the list view of a folder. This texts can you assign here. Depending on the score at the end of the game, one of this texts will be shown.]]></source>
+				<target><![CDATA[Sie müssen einen oder mehrere Abschlusstexte in der Listenansicht eines Verzeichnises erstellen. Diese Texte können Sie dann hier zuordnen. Abhängig vom Punktestand wird am Ende des Spiels einer dieser Texte angezeigt.]]></target>
+			</trans-unit>
+			<trans-unit id="settings.show_last.description">
+				<source><![CDATA[Show not only the first word. Show also the last word and let the player guess all words in between. Otherwise only the first word is given in the beginning.]]></source>
+				<target><![CDATA[Zeige nicht nur das erste Wort sondern auch das letzte Wort. Der Spieler muss alle Wörter dazwischen erraten. Ansonsten wird immer nur das erste Wort am Anfang vorgegeben.]]></target>
+			</trans-unit>
+			<trans-unit id="settings.xxx.alttitle">
+				<source><![CDATA[]]></source>
+				<target><![CDATA[]]></target>
+			</trans-unit>
+			<trans-unit id="settings.xxx.description">
+				<source><![CDATA[]]></source>
+				<target><![CDATA[]]></target>
+			</trans-unit>
+			<trans-unit id="settings.xxx.details">
+				<source><![CDATA[]]></source>
+				<target><![CDATA[]]></target>
+			</trans-unit>
+
+		</body>
+	</file>
+</xliff>

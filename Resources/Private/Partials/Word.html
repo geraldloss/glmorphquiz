@@ -1,0 +1,77 @@
+<f:comment> Import parameters </f:comment>
+<f:comment> {word -> f:debug(title: 'Members of word')} </f:comment>
+<f:comment> {morphquiz -> f:debug(title: 'Members of morphquiz')} </f:comment>
+
+<f:comment> Insert in input mode the animation of the arrow </f:comment>
+<f:if condition="{word.inputmode}">
+	<f:then>
+		<style>
+		/* class of a collumn of the send button */
+		td.glmorphquiz_cls_word_animate{
+		    animation: move_left {word.animation_speed}ms ease-out forwards;
+		    -webkit-animation: move_left {word.animation_speed}ms ease-out forwards;
+		    -moz-animation: move_left {word.animation_speed}ms ease-out forwards;
+		    -o-animation: move_left {word.animation_speed}ms ease-out forwards;
+		}
+		
+		/* animation code for the arrow */
+		@keyframes move_left {
+		    0%      {padding-left: 0px; width: {morphquiz.firstcolWidth}px}
+		    100%    {padding-left: {morphquiz.firstColSpace}px; width: {morphquiz.arrowWidth}px}
+		}
+		@-webkit-keyframes move_left {
+		    0%      {padding-left: 0px; width: {morphquiz.firstcolWidth}px}
+		    100%    {padding-left: {morphquiz.firstColSpace}px; width: {morphquiz.arrowWidth}px}
+		}
+		@-moz-keyframes move_left {
+		    0%      {padding-left: 0px; width: {morphquiz.firstcolWidth}px}
+		    100%    {padding-left: {morphquiz.firstColSpace}px; width: {morphquiz.arrowWidth}px}
+		}
+		@-o-keyframes move_left {
+		    0%      {padding-left: 0px; width: {morphquiz.firstcolWidth}px}
+		    100%    {padding-left: {morphquiz.firstColSpace}px; width: {morphquiz.arrowWidth}px}
+		}
+		</style>
+	</f:then>
+</f:if>
+	
+
+<table class="glmorphquiz_cls_input_word_table">
+<tr class="glmorphquiz_cls_input_word_row">
+	<!-- The first collumn with the arrow in the editable row -->
+	<td class="glmorphquiz_cls_word_animate glmorphquiz_cls_word_first" 
+		style="font-size: {word.fontsize}px; height: {word.height_letter}px; width: {morphquiz.firstcolWidth}px;">
+		<f:if condition="{word.inputmode}">
+			<f:then>
+				<img src="{morphquiz.arrowFile}" class="glmorphquiz_cls_arrow"/>
+			</f:then>
+			<f:else>
+				&nbsp;
+			</f:else>
+		</f:if>
+	</td>
+	
+   	<f:comment> go through every letter in the word </f:comment>
+   	<f:for each="{word.letters}" as="letter">
+   		<f:comment> call the partial for a single letter </f:comment>
+   		<f:render partial="letter" arguments="{letter: letter, word: word}" />
+	</f:for>
+	
+	<f:comment> Add the buttons, if this is the word with the input mode </f:comment>
+	<f:if condition="{word.inputmode}">
+		<f:then>
+			<td class="glmorphquiz_cls_button_word_col">
+			    <f:form.submit name="next" value="{f:translate(key: 'fluid_button_next', default: 'Next')}">
+			    	<input type="submit" value="Next" />
+			    </f:form.submit> 
+			</td>
+			<td class="glmorphquiz_cls_button_word_col">
+			    <f:form.submit name="solve" value="{f:translate(key: 'fluid_button_solve', default: 'Solve')}">
+			    	<input type="submit" value="Solve" />
+			    </f:form.submit> 
+			</td>
+		</f:then>
+	</f:if>
+
+</tr>
+</table>

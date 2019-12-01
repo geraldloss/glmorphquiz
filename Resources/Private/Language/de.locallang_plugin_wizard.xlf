@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-03-08T00:38:36Z" product-name="glmorphquiz">
+		<header/>
+		<body>
+			<trans-unit id="pi1.wizzard.title">
+				<source><![CDATA[Morphing Quiz]]></source>
+				<target><![CDATA[Verwandlungsrätsel]]></target>
+			</trans-unit>
+			<trans-unit id="pi1.wizzard.description">
+				<source><![CDATA[A Morphing Quiz game for the frontend]]></source>
+				<target><![CDATA[Ein Verwandlungsrätsel für das Frontend]]></target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

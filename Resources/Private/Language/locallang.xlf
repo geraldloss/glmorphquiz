@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-03-08T00:38:36Z" product-name="glmorphquiz">
+		<header/>
+		<body>
+			<trans-unit id="frontend_error_title">
+				<source><![CDATA[Error:]]></source>
+			</trans-unit>
+			<trans-unit id="frontend_zero_length_word">
+				<source><![CDATA[The word with the name "%s" and the uid "%s" has no word defined.]]></source>
+			</trans-unit>
+			<trans-unit id="frontend_other_length_word">
+				<source><![CDATA[The word with the name "%s" and the UID "%s" has another length (%s) then the word before with the name "%s" and the UID "%s" with length %s. It must have all words the same length.]]></source>
+			</trans-unit>
+			<trans-unit id="frontend_infinite_loop">
+				<source><![CDATA[Exception because of invinite loop. There are double references to the word with the UID: "%s" and the name: "%s" from word with name: "%s" and UID: "%s" and another word(s).]]></source>
+			</trans-unit>
+			<trans-unit id="frontend_letter_changings">
+				<source><![CDATA[Between the word with the name "%s" and the UID "%s" and the word with the name "%s" and the UID "%s" is not exactly one letter difference. There are %s letters different between "%s" and "%s". Please correct this issue.]]></source>
+			</trans-unit>
+			<trans-unit id="fluid_button_next">
+				<source><![CDATA[Next]]></source>
+			</trans-unit>
+			<trans-unit id="fluid_button_solve">
+				<source><![CDATA[Solve]]></source>
+			</trans-unit>
+			<trans-unit id="frontend_wrong_answer">
+				<source><![CDATA[This was not correct. Please try again!]]></source>
+			</trans-unit>
+			<trans-unit id="frontend_tomany_wrong_answers">
+				<source><![CDATA[Please remember. You are only allowed to change one single letter from word to word. But you have changed %s letters.]]></source>
+			</trans-unit>
+			<trans-unit id="fluid_points">
+				<source><![CDATA[Points:]]></source>
+			</trans-unit>
+			<trans-unit id="frontend_correct_answer">
+				<source><![CDATA[This answer was correct.]]></source>
+			</trans-unit>
+			<trans-unit id="frontend_solved_answer">
+				<source><![CDATA[That would have been the correct answer for this word.]]></source>
+			</trans-unit>
+			<trans-unit id="frontend_default_finishingtext">
+				<source><![CDATA[You have finished the game.]]></source>
+			</trans-unit>
+
+			<trans-unit id="frontend_empty">
+				<source><![CDATA[]]></source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

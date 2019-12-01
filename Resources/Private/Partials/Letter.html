@@ -1,0 +1,25 @@
+<f:comment> Import parameters </f:comment>
+<f:comment> {letter -> f:debug(title: 'Members of letter')} </f:comment>
+<f:comment> {word -> f:debug(title: 'Members of word')} </f:comment>
+
+<!-- The letter {letter.value} {f:if(condition: word.inputmode, then: 'in input mode', else: 'in read only mode')} -->
+<td class="glmorphquiz_cls_input_word_col">
+	
+	<f:comment> Insert Input Box with a lot of parameters </f:comment>
+    <input type="text" maxlength="{letter.length}" 
+    	   class="{f:if(condition: word.inputmode, then: 'glmorphquiz_cls_input_field', else: 'glmorphquiz_cls_input_field_ro')}" 
+		   style="font-size: {word.fontsize}px; height: {word.height_letter}px; 
+  					  width: {letter.widthBox}px;
+					  <f:if condition="{letter.marginRight}">
+					  	margin-right: {letter.marginRight}px;
+					  </f:if>"
+  		   value="{letter.value}"
+		   <f:if condition="{word.inputmode}">
+		    	name="tx_glmorphquiz_pi1[{letter.name}]"
+		   </f:if>
+		   <f:comment> The javascript calls for the key events </f:comment>
+		   <f:format.raw value="{letter.onKeyUp} {letter.onKeyDown}" />
+    	   {f:if(condition: word.inputmode, else: 'readonly')}
+    	   {f:if(condition: letter.autofocus, then: 'autofocus')}
+    />
+</td>

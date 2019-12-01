@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-03-08T00:38:36Z" product-name="glmorphquiz">
+		<header/>
+		<body>
+			<trans-unit id="frontend_error_title">
+				<source><![CDATA[Error:]]></source>
+				<target><![CDATA[Fehler:]]></target>
+			</trans-unit>
+			<trans-unit id="frontend_zero_length_word">
+				<source><![CDATA[The word with the name "%s" and the uid "%s" has no word defined.]]></source>
+				<target><![CDATA[Für das Wort mit dem Namen "%s" und der uid "%s" wurde kein Wort hinterlegt.]]></target>
+			</trans-unit>
+			<trans-unit id="frontend_other_length_word">
+				<source><![CDATA[The word with the name "%s" and the UID "%s" has another length (%s) then the word before with the name "%s" and the UID "%s" with length %s. It must have all words the same length.]]></source>
+				<target><![CDATA[Für das Wort mit dem Namen "%s" und der uid "%s" wurde ein Wort mit einer anderen Länge (%s) hinterlegt, als für das Wort davor mit dem Namen "%s" der UID "%s" und der Länge %s. Es müssen aber immer alle Wörter gleich lang sein.]]></target>
+			</trans-unit>
+			<trans-unit id="frontend_infinite_loop">
+				<source><![CDATA[Exception because of invinite loop. There are double references to the word with the UID: "%s" and the name: "%s" from word with name: "%s" and UID: "%s" and another word(s).]]></source>
+				<target><![CDATA[Ausnahme wegen Endlosschleife: Es existieren doppeltes Referenzen auf das Wort mit der UID: "%s" und den Namen: "%s" vom Wort mit dem Namen: "%s" und der UID: "%s" und einem anderen Wort/Worten.]]></target>
+			</trans-unit>
+			<trans-unit id="frontend_letter_changings">
+				<source><![CDATA[Between the word with the name "%s" and the UID "%s" and the word with the name "%s" and the UID "%s" is not exactly one letter difference. There are %s letters different between "%s" and "%s". Please correct this issue.]]></source>
+				<target><![CDATA[Zwischen dem Wort mit dem Namen "%s" und der UID "%s" und dem Wort mit dem Namen "%s" und der UID "%s" besteht kein Unterschied von exakt einem Buchstaben. Es sind %s Buchstaben unterschiedlich zwischen "%s" und "%s". Bitte korrigieren Sie dieses Problem.]]></target>
+			</trans-unit>
+			<trans-unit id="fluid_button_next">
+				<source><![CDATA[Next]]></source>
+				<target><![CDATA[Weiter]]></target>
+			</trans-unit>
+			<trans-unit id="fluid_button_solve">
+				<source><![CDATA[Solve]]></source>
+				<target><![CDATA[Lösen]]></target>
+			</trans-unit>
+			<trans-unit id="frontend_wrong_answer">
+				<source><![CDATA[This was not correct. Please try again!]]></source>
+				<target><![CDATA[Das war nicht richtig. Versuchen Sie es noch mal!]]></target>
+			</trans-unit>
+			<trans-unit id="frontend_tomany_wrong_answers">
+				<source><![CDATA[Please remember. You are only allowed to change one single letter from word to word. But you have changed %s letters.]]></source>
+				<target><![CDATA[Bitte denken Sie daran. Es darf sich von Wort zu Wort immer nur ein Buchstabe ändern. Sie haben aber %s Buchstaben geändert]]></target>
+			</trans-unit>
+			<trans-unit id="fluid_points">
+				<source><![CDATA[Points:]]></source>
+				<target><![CDATA[Punkte:]]></target>
+			</trans-unit>
+			<trans-unit id="frontend_correct_answer">
+				<source><![CDATA[This answer was correct.]]></source>
+				<target><![CDATA[Die Antwort war richtig.]]></target>
+			</trans-unit>
+			<trans-unit id="frontend_solved_answer">
+				<source><![CDATA[That would have been the correct answer for this word.]]></source>
+				<target><![CDATA[Das wäre die richtige Anwort für dieses Wort gewesen.]]></target>
+			</trans-unit>
+			<trans-unit id="frontend_default_finishingtext">
+				<source><![CDATA[You have finished the game.]]></source>
+				<target><![CDATA[Sie haben das Spiel beendet.]]></target>
+			</trans-unit>
+
+			<trans-unit id="frontend_empty">
+				<source><![CDATA[]]></source>
+				<target><![CDATA[]]></target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

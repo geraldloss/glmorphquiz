@@ -1,0 +1,159 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+	<f:comment> Import parameters </f:comment>
+   	<f:comment> {morphquiz -> f:debug(title: 'Members of morphquiz')} </f:comment> 
+
+	<!-- Flash message container -->
+	<f:flashMessages as="flashMessages">
+		<ul class="typo3-messages">
+        <f:for each="{flashMessages}" as="flashMessage">
+			<li class="alert alert-info" style="list-style-type: none;">
+				<p class="alert-message">{flashMessage}</p>
+			</li>
+        </f:for>
+		</ul>
+	</f:flashMessages>
+
+	<f:form id="tx_glmorphquiz_pi1_form"
+			action="response" controller="MorphingQuiz" 
+			arguments="{wordIndex: morphquiz.wordIndex, score: morphquiz.score}" method="post">
+		
+			<!-- The javascript for jumping to the next input box -->	
+			<script TYPE="text/javascript">
+			<!--
+			// the input field with the keyDow event
+			var downField;
+			// get the form element
+			var form = document.getElementById("tx_glmorphquiz_pi1_form");
+						
+			function glmorphKeyDown(event, iv_c_currentFieldName){
+			    downField = form.elements[iv_c_currentFieldName];
+			    // remember the length of the field bevore the key is entered
+			    downField.lengthBevore = downField.value.length;
+			    // get the current cursor position
+			    downField.cursorPositionBevore = getCursorPosition(downField);
+			}
+			
+			function glmorphKeyUp(event, iv_c_currentFieldName, iv_c_nextFieldName, iv_c_bevoreFieldName){
+			    
+			    var lv_currentField = form.elements[iv_c_currentFieldName];
+				// the unicode value of the current pressed key
+				var currentKeyCode;
+				
+				// some browsers don't support event object			    
+			    if (typeof event !== 'undefined') {
+					// save the unicode value of the pressed key
+					currentKeyCode = event.which || event.keyCode || event.key;
+			    };
+			    
+
+		       	// if backspace is pressed
+		       	// and in the current field is no letter any more
+		       	if (   currentKeyCode == 8
+		       		&& lv_currentField.lengthBevore == 0 ){
+		       		
+		       		// if there exists an input box bevore 
+			       	if (typeof form.elements[iv_c_bevoreFieldName] !== 'undefined'){
+				        // focus the element bevore
+				        form.elements[iv_c_bevoreFieldName].focus();
+				        form.elements[iv_c_bevoreFieldName].select();
+			       }
+			       // exit function now
+			       return;
+		       	}
+				
+				// if pressed left cursor key
+				// and if the cursor is at the beginning of the field, bevore it was moved by the cursor key
+		       	if (   currentKeyCode == 37
+					&& lv_currentField.cursorPositionBevore == 0 ){
+
+		       		// if there exists an input box bevore 
+			       	if (typeof form.elements[iv_c_bevoreFieldName] !== 'undefined'){
+				        // focus the element bevore
+				        form.elements[iv_c_bevoreFieldName].focus();
+				        form.elements[iv_c_bevoreFieldName].select();
+			       }
+			       // exit function now
+			       return;
+				}
+				
+				// if right cursor key is pressed 
+				// an the cursor is not at the and of the box content
+				if (   currentKeyCode == 39 
+					&& lv_currentField.cursorPositionBevore != lv_currentField.value.length ){
+					// then dont jump to the next box
+					return;
+				} 
+								
+			    // if this is the key with the keyDown event
+			    // and if the length of the content is not lower than bevor
+			    // and if the max length is reached
+			    // and if not shift+tab is pressed (for this we don't)
+			    // and the left cursor key is not pressed
+			    if(   lv_currentField == downField
+			       && lv_currentField.value.length >= lv_currentField.lengthBevore
+			       && lv_currentField.value.length >= lv_currentField.maxLength
+			       && currentKeyCode != 9 
+			       && currentKeyCode != 37){
+			       	
+			       	// only if we are not on the last letter
+			       	if (typeof form.elements[iv_c_nextFieldName] !== 'undefined'){
+				        // focus the next element
+				        form.elements[iv_c_nextFieldName].focus();
+				        form.elements[iv_c_nextFieldName].select();
+			       }
+			    }
+		       	// initialize current key code
+		       	currentKeyCode = '';
+			}
+			
+			// get the cursor position of the input box
+			function getCursorPosition (inputBox) {
+			
+			  // Initialize curso position
+			  var cursorPosition = 0;
+			
+			  // for IE 
+			  if (document.selection) {
+			
+			    // First get empty selection range
+			    var selectionRange = document.selection.createRange();
+			
+			    // Move the selection start to 0 position
+			    selectionRange.moveStart('character', -inputBox.value.length);
+			
+			    // retreive the cursor position
+			    cursorPosition = selectionRange.text.length;
+			  }
+			
+			  // for Firefox browser 
+			  else if (inputBox.selectionStart || inputBox.selectionStart == '0')
+			    cursorPosition = inputBox.selectionStart;
+			
+			  // Return cursor position
+			  return cursorPosition;
+			}			
+			//-->
+			</script>	
+	
+		   	<f:comment> go through every word in the morphing quiz </f:comment>
+	   	<f:for each="{morphquiz.words}" as="word">
+	   		<f:comment> call the partial for a single word </f:comment>
+	   		<f:render partial="word" arguments="{word: word, morphquiz: morphquiz}" />
+		</f:for>
+	</f:form>
+	<div class="glmorphquiz_cls_result">
+	   	<f:comment> Show the score at the bottom </f:comment>
+		{f:translate(key: 'fluid_points', default: 'Points:')} {morphquiz.score}
+	</div>
+	
+   	<f:comment> Show the finishingtext if the game is over </f:comment>
+	<f:if condition="{morphquiz.lastWord}">
+		<f:then>
+			<div class="glmorphquiz_cls_finaltext">
+				<f:format.html>{morphquiz.finishingtext}</f:format.html>
+			</div>
+		</f:then>
+	</f:if>
+</f:section>

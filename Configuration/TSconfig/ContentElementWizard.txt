@@ -1,0 +1,13 @@
+mod.wizards.newContentElement.wizardItems.plugins {
+	elements {
+		glmorphquiz {
+			iconIdentifier = glmorphquiz-ext-icon
+			title = LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_plugin_wizard.xlf:pi1.wizzard.title
+			description = LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_plugin_wizard.xlf:pi1.wizzard.description
+			tt_content_defValues {
+				CType = list
+				list_type = glmorphquiz_pi1
+			}
+		}
+	}
+}

@@ -1,0 +1,35 @@
+{
+	"name" : "loss/glmorphquiz",
+	"type" : "typo3-cms-extension",
+	"description" : "In the morphing quiz you get provide the first and the last word of the quiz. You have to find the words in between, but from one word to the next word you are only allowed to change one letter.",
+	"authors" : [{
+			"name" : "Gerald Loss",
+			"role" : "Developer"
+		}
+	],
+	"require" : {
+		"typo3/cms-core" : "^9.5.0"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"Loss\\Glmorphquiz\\" : "Classes"
+		}
+	},
+	"replace" : {
+		"glmorphquiz" : "self.version",
+		"typo3-ter/glmorphquiz" : "self.version"
+	},
+	"homepage" : "https://www.schulze-thulin.de/en/games/verwandlungsraetsel",
+	"support" : {
+		"email" : "gerald.loss@gmx.de",
+		"issues" : "https://github.com/geraldloss/glmorphquiz/issues",
+		"source" : "https://github.com/geraldloss/glmorphquiz"
+	},
+	"license" : "GPL-3.0+",
+	"keywords" : [
+		"TYPO3",
+		"extension",
+		"morphquiz",
+		"game"
+	]
+}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-03-08T00:38:36Z" product-name="glmorphquiz">
+		<header/>
+		<body>
+			<trans-unit id="name.description">
+				<source><![CDATA[The name of the word for internal use]]></source>
+			</trans-unit>
+			<trans-unit id="start.description">
+				<source><![CDATA[The first word in the morphing quiz.]]></source>
+			</trans-unit>
+			<trans-unit id="value.description">
+				<source><![CDATA[the word itself]]></source>
+			</trans-unit>
+			<trans-unit id="next_word.description">
+				<source><![CDATA[The next word after this word. If empty this is the last word of the quiz.]]></source>
+			</trans-unit>
+			<trans-unit id="mask.alttitle">
+				<source><![CDATA[Edit mask for the word]]></source>
+			</trans-unit>
+			<trans-unit id="mask.description">
+				<source><![CDATA[Configure if some letters should come together in one field. Click here for more details.]]></source>
+			</trans-unit>
+			<trans-unit id="mask.details">
+				<source><![CDATA[You can for every field describe how many letter it should contain. For instance if the first 3 fields should contain only one letter and the fourth field should contain 2 letters, then you have to write 1112 into this field. If all fields after the fourth field contain only one letter again, then you can omit this in the mask. If all fields contain only one field, then left the mask empty]]></source>
+			</trans-unit>
+			<trans-unit id="mask.syntax">
+				<source><![CDATA[If the word ist weather and you want th in one field then write 1112111 or 1112]]></source>
+			</trans-unit>
+
+			<trans-unit id="fontsize.description">
+				<source><![CDATA[Size of the font in the inputbox. Here can you overrule the setting of this value in the flexgrid of the frontend plugin. If you enter 0, than the value of the overall flexgrid option of the frontend plugin will be taken.]]></source>
+			</trans-unit>
+			<trans-unit id="heigth_letter.description">
+				<source><![CDATA[Height of a letter inputbox. Here can you overrule the setting of this value in the flexgrid of the frontend plugin. If you enter 0, than the value of the overall flexgrid option of the frontend plugin will be taken.]]></source>
+			</trans-unit>
+			<trans-unit id="width_letter.description">
+				<source><![CDATA[Is in this letter box more than one letter, then the width is a multiply of the count of the letters. Here can you overrule the setting of this value in the flexgrid of the frontend plugin. If you enter 0, than the value of the overall flexgrid option of the frontend plugin will be taken. Click here for details.]]></source>
+			</trans-unit>
+			<trans-unit id="width_letter.seeAlso">
+				<source>tx_glmorphquiz_domain_model_word:width_letter_offset</source>
+			</trans-unit>
+			<trans-unit id="width_letter_offset.description">
+				<source><![CDATA[This offset is added to the width of a letter box. Click here for details.]]></source>
+			</trans-unit>
+			<trans-unit id="width_letter_offset.details">
+				<source><![CDATA[The width of a letter box is the sum of the offset with the multiply of the count of letters in this box with the width of a single letter. Example: If the offset is 3 and the widht is 12 than is the total width of a inputbox with two letter 27 = 3 + (2*12). Here can you overrule the setting of this value in the flexgrid of the frontend plugin. If you enter 0, than the value of the overall flexgrid option of the frontend plugin will be taken.]]></source>
+			</trans-unit>
+			<trans-unit id="firstcol_width.description">
+				<source><![CDATA[Width of the first collumn with the arrow.]]></source>
+			</trans-unit>
+			<trans-unit id="arrow_width.description">
+				<source><![CDATA[With of the arrow. Change this value only, if you have changed the image of the arrow.]]></source>
+			</trans-unit>
+			<trans-unit id="animation_speed.description">
+				<source><![CDATA[Change the duration of the movement of the arrow in the beginning in Milliseconds. Here can you overrule the setting of this value in the flexgrid of the frontend plugin. If you enter 0, than the value of the overall flexgrid option of the frontend plugin will be taken.]]></source>
+			</trans-unit>
+			<trans-unit id="points.description">
+				<source><![CDATA[Points for a correct answer. Set 0 if you don't want points. Here can you overrule the setting of this value in the flexgrid of the frontend plugin. If you enter 0, than the value of the overall flexgrid option of the frontend plugin will be taken.]]></source>
+			</trans-unit>
+			<trans-unit id="minus_points.description">
+				<source><![CDATA[Points for a wrong answer. Set 0 if you don't want minus points. Here can you overrule the setting of this value in the flexgrid of the frontend plugin. If you enter 0, than the value of the overall flexgrid option of the frontend plugin will be taken.]]></source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
