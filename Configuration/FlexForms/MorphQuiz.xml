@@ -20,6 +20,7 @@
 					            <items type="array">
 				                	<numIndex index="0" type="array"></numIndex>
 			                    </items>
+								<renderType>selectSingle</renderType>
 			                    <foreign_table>tx_glmorphquiz_domain_model_word</foreign_table>
 								<foreign_table_where>ORDER BY name ASC</foreign_table_where>
 			                    <size>1</size>
@@ -75,6 +76,7 @@
 							<label>LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_flexForms.xlf:flexform.plugin.general.has_finishtext</label>
 							<config>
 			                    <type>select</type>
+								<renderType>selectMultipleSideBySide</renderType>
 			                    <foreign_table>tx_glmorphquiz_domain_model_finishingtext</foreign_table>		                    	
 								<size>10</size>
 								<autoSizeMax>30</autoSizeMax>

@@ -9,7 +9,7 @@ use Loss\Glmorphquiz\Controller\MorphingQuizController;
  *
  *  Copyright notice
  *
- *  (c) 2015 Gerald Loﬂ <gerald.loss@gmx.de>
+ *  (c) 2015 Gerald Lo√ü <gerald.loss@gmx.de>
  *
  *  All rights reserved
  *

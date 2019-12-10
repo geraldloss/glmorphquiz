@@ -14,19 +14,19 @@ $EM_CONF[$_EXTKEY] = array(
 	'title' => 'Morphing Quiz',
 	'description' => 'In the morphing quiz you get provide the first and the last word of the quiz. You have to find the words in between, but from one word to the next word you are only allowed to change one letter.',
 	'category' => 'plugin',
-	'author' => 'Gerald Loß',
+	'author' => 'Gerald LoÃŸ',
 	'author_email' => 'gerald.loss@gmx.de',
 	'state' => 'stable',
 	'internal' => '',
 	'uploadfolder' => '0',
 	'createDirs' => '',
 	'clearCacheOnLoad' => 0,
-	'version' => '1.2.0',
+	'version' => '1.2.1',
 	'constraints' => array(
 		'depends' => 
 		array (
 			'php' => '7.2.0-7.3.99',
-			'typo3' => '9.5.0-10.1.99',
+			'typo3' => '9.5.0-10.2.99',
 		),
 		'conflicts' => array(
 		),
