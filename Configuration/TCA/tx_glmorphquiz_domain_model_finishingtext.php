@@ -24,9 +24,6 @@ $tx_glmorphquiz_domain_model_finishingtext = array(
         'searchFields' => 'minpoints,text,',
         'iconfile' => 'EXT:glmorphquiz/Resources/Public/Icons/tx_glmorphquiz_domain_model_finishingtext.gif',
     ),
-	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, minpoints, text',
-	),
 	'types' => array(
 	    '1' => array(  'showitem' => 'hidden,--palette--;;1, name, minpoints, text,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'
 	   ),
@@ -52,7 +49,6 @@ $tx_glmorphquiz_domain_model_finishingtext = array(
 		),
 		'l10n_parent' => array(
 			'displayCond' => 'FIELD:sys_language_uid:>:0',
-			'exclude' => 1,
 			'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
 			'config' => array(
 			    'type' => 'select',

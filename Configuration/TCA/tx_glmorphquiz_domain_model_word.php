@@ -24,9 +24,6 @@ $tx_glmorphquiz_domain_model_word = array(
         'searchFields' => 'name,value,next_word,',
         'iconfile' => 'EXT:glmorphquiz/Resources/Public/Icons/tx_glmorphquiz_domain_model_word.gif',
     ),
-	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, value, mask, next_word, fontsize, heigth_letter, width_letter, width_letter_offset, firstcol_width, arrow_width, animation_speed, points, minus_points',
-	),
 	'types' => array(
 		'1' => array( 'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, --palette--;;1, name, value, mask, next_word, 
 									--div--;LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_db.xlf:tx_glmorphquiz_domain_model_word.tabpoints, points, minus_points,
@@ -55,7 +52,6 @@ $tx_glmorphquiz_domain_model_word = array(
 		),
 		'l10n_parent' => array(
 			'displayCond' => 'FIELD:sys_language_uid:>:0',
-			'exclude' => 1,
 			'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
 			'config' => array(
 				'type' => 'select',
