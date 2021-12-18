@@ -7,12 +7,12 @@ if (!defined('TYPO3_MODE')) {
 	'Loss.glmorphquiz',
 	'Pi1',
 	array(
-		'MorphingQuiz' => 'list,response',
+	    \Loss\Glmorphquiz\Controller\MorphingQuizController::class => 'list,response',
 		
 	),
 	// non-cacheable actions
 	array(
-		'MorphingQuiz' => 'list,response',	
+	    \Loss\Glmorphquiz\Controller\MorphingQuizController::class => 'list,response',	
 	)
 );
 

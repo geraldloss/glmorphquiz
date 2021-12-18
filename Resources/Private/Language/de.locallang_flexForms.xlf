@@ -11,6 +11,10 @@
 				<source><![CDATA[The first word of the morphing game]]></source>
 				<target><![CDATA[Das erste Wort des Verwandlungsrätsels]]></target>
 			</trans-unit>
+			<trans-unit id="flexform.plugin.general.itemText">
+				<source><![CDATA[Choose the first word]]></source>
+				<target><![CDATA[Wähle das erste Wort]]></target>
+			</trans-unit>
 			<trans-unit id="flexform.plugin.general.fontsize">
 				<source><![CDATA[Fontsize]]></source>
 				<target><![CDATA[Schriftgröße]]></target>

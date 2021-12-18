@@ -6,6 +6,7 @@ use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use Loss\Glmorphquiz\Domain\Model\Letter;
 use TYPO3\CMS\Core\Utility\PathUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Page\PageRenderer;
 
 /***************************************************************
  *
@@ -120,13 +121,15 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 	protected function initializeAction() {
 		// path to the css file
 		$l_strPathCss = '';
+
+		// set the path to the css file of this extension
+		$l_strPathCss = '<link href="' . $this->getCssFile() .  '" rel="stylesheet" type="text/css" />';
 		
-		// if the link to MorphQuiz.css not already exist
-		if (!$this->existAdditionalHeaderData($this->response->getAdditionalHeaderData(), 'MorphQuiz.css')) {
-			// set the path to the css file of this extension
-			$l_strPathCss = '<link href="' . $this->getCssFile() .  '" rel="stylesheet" type="text/css" />';
-			$this->response->addAdditionalHeaderData($l_strPathCss);
-		}
+		/**
+		 * @var $pageRenderer $pageRenderer
+		 */
+		$pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
+		$pageRenderer->addCssFile($this->getCssFile());
 	}
 	
 	
@@ -156,11 +159,15 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 		$GLOBALS['TSFE']->fe_user->setAndSaveSessionData(
 				self::c_strMorphQuizSessionName,
 				NULL );
-		
+        
 		// if this is the first call of this action
 		if ($l_objMorphingQuizData === NULL) {
 			// build the object with the morphing quiz datas
 			$l_objMorphingQuizData = $this->createMorpingQuizData(1);
+		}
+		else {
+		    // fix the class from the session 
+		    $l_objMorphingQuizData = $this->fixSessionObject($l_objMorphingQuizData);
 		}
 		
 		// check for errors
@@ -748,6 +755,14 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 			// return this text
 			return $l_objRetFinishingText->getText();
 		}
+	}
+	
+	protected function fixSessionObject(&$i_objObject){
+	    
+	    if (is_object ($i_objObject) && get_class($i_objObject) == '__PHP_Incomplete_Class')
+	        return ($i_objObject = unserialize(serialize($i_objObject)));
+	        
+	        return $i_objObject;
 	}
 }
 
