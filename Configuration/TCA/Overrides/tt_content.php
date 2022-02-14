@@ -6,7 +6,6 @@
     );
 
 // insert flexform for plugin pi1
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['glmorphquiz_pi1'] = 'layout,select_key,pages';
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['glmorphquiz_pi1'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
     'glmorphquiz_pi1', 

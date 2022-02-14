@@ -41,14 +41,15 @@
 	<!-- The first collumn with the arrow in the editable row -->
 	<td class="glmorphquiz_cls_word_animate glmorphquiz_cls_word_first" 
 		style="font-size: {word.fontsize}px; height: {word.height_letter}px; width: {morphquiz.firstcolWidth}px;">
-		<f:if condition="{word.inputmode}">
-			<f:then>
+		<f:if condition="{word.inputmode}"><f:then>
+			<f:if condition="{morphquiz.arrowFile} != ''"><f:then>
 				<img src="{morphquiz.arrowFile}" class="glmorphquiz_cls_arrow"/>
-			</f:then>
-			<f:else>
-				&nbsp;
-			</f:else>
-		</f:if>
+			</f:then><f:else>
+				<div class="glmorphquiz_cls_arrow"></div>
+			</f:else></f:if>
+		</f:then><f:else>
+			&nbsp;
+		</f:else></f:if>
 	</td>
 	
    	<f:comment> go through every letter in the word </f:comment>

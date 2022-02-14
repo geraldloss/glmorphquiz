@@ -59,6 +59,12 @@ input.glmorphquiz_cls_input_field_ro{
 img.glmorphquiz_cls_arrow {
     vertical-align: middle;
 }
+div.glmorphquiz_cls_arrow {
+    vertical-align: middle;
+    width: 30px;
+    height: 15px;
+    background-image: url("/typo3conf/ext/glmorphquiz/Resources/Public/images/Arrow.gif");
+}
 
 /* Messages at the bottom of the game */
 div.glmorphquiz_cls_result{
@@ -73,4 +79,15 @@ div.typo3-messages{
 /* the div container for the final text at the end of the game */
 div.glmorphquiz_cls_finaltext{
     margin-top: 20px;
+}
+
+/* for dark mode settings */
+@media (prefers-color-scheme: dark) {
+   /* class of the read only input fields  */
+    input.glmorphquiz_cls_input_field_ro{
+        border: 1px solid #8c8c8c;
+     }    
+	div.glmorphquiz_cls_arrow {
+	    background-image: url("/typo3conf/ext/glmorphquiz/Resources/Public/images/ArrowDark.gif");
+	}
 }

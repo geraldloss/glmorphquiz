@@ -6,25 +6,21 @@
 	<sheets>
 		<common>
 			<ROOT>
+				<type>array</type>
 				<TCEforms>
 					<sheetTitle>LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_flexForms.xlf:flexform.plugin.general.sheet_title</sheetTitle>
 					<cshFile>LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_csh_flexform.xml</cshFile>
 				</TCEforms>
-				<type>array</type>
 				<el>
 					<settings.firstWord>
 						<TCEforms>
- 							<label>LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_flexForms.xlf:flexform.plugin.general.firstWord</label>
+							<label>LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_flexForms.xlf:flexform.plugin.general.firstWord</label>
 							<config>
 			                    <type>select</type>		                    	
- 								<renderType>selectSingle</renderType>
-                                <items>
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_flexForms.xlf:flexform.plugin.general.itemText</numIndex>
-                                        <numIndex index="1"></numIndex>
-                                        <numIndex index="2">EXT:glmorphquiz/Resources/Public/Icons/tx_glmorphquiz_domain_model_word.gif</numIndex>
-                                    </numIndex>
-                                </items>
+					            <items type="array">
+				                	<numIndex index="0" type="array"></numIndex>
+			                    </items>
+								<renderType>selectSingle</renderType>
 			                    <foreign_table>tx_glmorphquiz_domain_model_word</foreign_table>
 								<foreign_table_where>ORDER BY name ASC</foreign_table_where>
 			                    <size>1</size>
@@ -109,7 +105,7 @@
 								<default>15</default>
 								<size>5</size>
 								<max>5</max>
-  								<eval>int</eval> 
+  								<eval>int,num</eval> 
 								<range>
 									<lower>1</lower>
 									<upper>99999</upper>
@@ -125,7 +121,7 @@
 								<default>25</default>
 								<size>5</size>
 								<max>5</max>
-  								<eval>int</eval> 
+  								<eval>int,num</eval> 
 								<range>
 									<lower>1</lower>
 									<upper>99999</upper>
@@ -141,7 +137,7 @@
 								<default>12</default>
 								<size>5</size>
 								<max>5</max>
-  								<eval>int</eval> 
+  								<eval>int,num</eval> 
 								<range>
 									<lower>1</lower>
 									<upper>99999</upper>
@@ -157,7 +153,7 @@
 								<default>3</default>
 								<size>5</size>
 								<max>5</max>
-  								<eval>int</eval> 
+  								<eval>int,num</eval> 
 								<range>
 									<lower>1</lower>
 									<upper>99999</upper>
@@ -173,7 +169,7 @@
 								<default>50</default>
 								<size>5</size>
 								<max>5</max>
-  								<eval>int</eval> 
+  								<eval>int,num</eval> 
 								<range>
 									<lower>1</lower>
 									<upper>99999</upper>
@@ -197,7 +193,7 @@
 								<default>30</default>
 								<size>5</size>
 								<max>5</max>
-  								<eval>int</eval> 
+  								<eval>int,num</eval> 
 								<range>
 									<lower>1</lower>
 									<upper>99999</upper>
@@ -213,7 +209,7 @@
 								<default>500</default>
 								<size>5</size>
 								<max>5</max>
-  								<eval>int</eval> 
+  								<eval>int,num</eval> 
 								<range>
 									<lower>1</lower>
 									<upper>99999</upper>

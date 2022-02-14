@@ -9,9 +9,6 @@
 			<trans-unit id="flexform.plugin.general.firstWord">
 				<source><![CDATA[The first word of the morphing game]]></source>
 			</trans-unit>
-			<trans-unit id="flexform.plugin.general.itemText">
-				<source><![CDATA[Choose the first word]]></source>
-			</trans-unit>
 			<trans-unit id="flexform.plugin.general.fontsize">
 				<source><![CDATA[Fontsize]]></source>
 			</trans-unit>
