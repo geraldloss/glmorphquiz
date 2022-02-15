@@ -16,6 +16,12 @@ Installation
 
 Install the extension with the Extension Manager. There is no further configuration needed.
 
+If you are using composer you can install the extension with the following command.
+
+::
+
+    composer require geraldloss/glmorphquiz
+
 In the following we need acces to the public folder of the extension. If your extension folder 
 is not accessible by default then provide access at least to the following folder.
 
