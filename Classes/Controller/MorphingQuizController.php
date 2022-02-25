@@ -120,9 +120,6 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 	 */
 	protected function initializeAction() {
 		// path to the css file
-		$l_strPathCss = '';
-		
-		$l_strPathCss = '<link href="' . $this->getCssFile() .  '" rel="stylesheet" type="text/css" />';
 		$pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
 		$pageRenderer->addCssFile($this->getCssFile());
 	}
