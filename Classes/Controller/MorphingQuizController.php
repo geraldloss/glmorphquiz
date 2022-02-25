@@ -6,6 +6,7 @@ use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use Loss\Glmorphquiz\Domain\Model\Letter;
 use TYPO3\CMS\Core\Utility\PathUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Page\PageRenderer;
 
 /***************************************************************
  *
@@ -121,12 +122,9 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 		// path to the css file
 		$l_strPathCss = '';
 		
-		// if the link to MorphQuiz.css not already exist
-		if (!$this->existAdditionalHeaderData($this->response->getAdditionalHeaderData(), 'MorphQuiz.css')) {
-			// set the path to the css file of this extension
-			$l_strPathCss = '<link href="' . $this->getCssFile() .  '" rel="stylesheet" type="text/css" />';
-			$this->response->addAdditionalHeaderData($l_strPathCss);
-		}
+		$l_strPathCss = '<link href="' . $this->getCssFile() .  '" rel="stylesheet" type="text/css" />';
+		$pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
+		$pageRenderer->addCssFile($this->getCssFile());
 	}
 	
 	
@@ -151,7 +149,8 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 		
 		// try to get the current context from the session
 		$l_objMorphingQuizData = $GLOBALS['TSFE']->fe_user->getKey('ses', self::c_strMorphQuizSessionName);
-
+		$l_objMorphingQuizData = $this->fixSessionObject($l_objMorphingQuizData);
+		
 		// delete the game context from the session
 		$GLOBALS['TSFE']->fe_user->setAndSaveSessionData(
 				self::c_strMorphQuizSessionName,
@@ -238,6 +237,20 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 		// redirect to the list action
 		$this->redirect('list');
 	}
+
+	/**
+	 * Korrigiert Objekte aus der Session die beim deserialisieren ein __PHP_Incomplete_Class Objekt werden
+	 * @param object $i_objObject
+	 * @return object
+	 */
+	protected function fixSessionObject(&$i_objObject){
+	    
+	    if (is_object ($i_objObject) && get_class($i_objObject) == '__PHP_Incomplete_Class')
+	        return ($i_objObject = unserialize(serialize($i_objObject)));
+	        
+	    return $i_objObject;
+	}
+	
 	
 	/**
 	 * Returns an object storage with all data for the morphing quiz game.

@@ -35,22 +35,30 @@ $tx_glmorphquiz_domain_model_word = array(
 	),
 	'columns' => array(
 	
-		'sys_language_uid' => array(
-			'exclude' => 1,
-			'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.language',
-			'config' => array(
-				'type' => 'select',
-				'foreign_table' => 'sys_language',
-			    'foreign_table_where' => 'ORDER BY sys_language.title',
-			    'renderType' => 'selectSingle',
-				'items' => array(
-					array('LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages', -1),
-					array('LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.default_value', 0)
-				),
-			    'default' => 0
-			),
-		),
-		'l10n_parent' => array(
+//      for Typo3 11.5 switch to this syntax. But in the moment it breakks with 10.4
+// 		'sys_language_uid' => array(
+// 			'exclude' => 1,
+// 			'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.language',
+// 		    'config' => array(
+// 		        'type'       => 'language',
+// 		    ),
+// 		),
+	    'sys_language_uid' => array(
+	        'exclude' => 1,
+	        'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.language',
+	        'config' => array(
+	            'type' => 'select',
+	            'foreign_table' => 'sys_language',
+	            'foreign_table_where' => 'ORDER BY sys_language.title',
+	            'renderType' => 'selectSingle',
+	            'items' => array(
+	                array('LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages', -1),
+	                array('LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.default_value', 0)
+	            ),
+	            'default' => 0
+	        ),
+	    ),
+	    'l10n_parent' => array(
 			'displayCond' => 'FIELD:sys_language_uid:>:0',
 			'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
 			'config' => array(
