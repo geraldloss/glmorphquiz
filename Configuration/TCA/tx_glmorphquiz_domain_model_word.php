@@ -1,6 +1,6 @@
 <?php
-if (!defined ('TYPO3_MODE')) {
-	die ('Access denied.');
+if (!defined('TYPO3')) {
+    die('Do not access the file tx_glmorphquiz_domain_model_word.php directly.');
 }
 
 $tx_glmorphquiz_domain_model_word = array(
@@ -23,6 +23,9 @@ $tx_glmorphquiz_domain_model_word = array(
         ),
         'searchFields' => 'name,value,next_word,',
         'iconfile' => 'EXT:glmorphquiz/Resources/Public/Icons/tx_glmorphquiz_domain_model_word.gif',
+        'security' => [
+            'ignoreRootLevel' => 1
+        ],
     ),
 	'types' => array(
 		'1' => array( 'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, --palette--;;1, name, value, mask, next_word, 

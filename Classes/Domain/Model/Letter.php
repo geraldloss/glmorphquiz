@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace Loss\Glmorphquiz\Domain\Model;
 
 
@@ -39,35 +40,35 @@ class Letter {
 	 *
 	 * @var \Loss\Glmorphquiz\Domain\Model\Word
 	 */
-	protected $m_objWord = NULL;
+	protected ?\Loss\Glmorphquiz\Domain\Model\Word $m_objWord = null;
 	
 	/**
 	 * Value of the letter
 	 *
 	 * @var string
 	 */
-	protected $m_strValue = '';
+	protected string $m_strValue = '';
 	
 	/**
 	 * The correct Value of the letter
 	 *
 	 * @var string
 	 */
-	protected $m_strCorrectValue = '';
+	protected string $m_strCorrectValue = '';
 
 	/**
 	 * Length of the letter
 	 *
-	 * @var integer
+	 * @var int
 	 */
-	protected $m_intLength = 0;
+	protected int $m_intLength = 0;
 	
 	/**
 	 * Letter gets the autofocus
 	 *
-	 * @var boolean
+	 * @var bool
 	 */
-	protected $m_blnAutofocus = FALSE;
+	protected bool $m_blnAutofocus = false;
 	
 	
 	/**
@@ -75,30 +76,30 @@ class Letter {
 	 *
 	 * @var string
 	 */
-	protected $m_strName = '';
+	protected string $m_strName = '';
 	
 	
 	/**
 	 * The margin on the right side, if the overall width of a collumn 
 	 * is wider than the current width.
 	 *
-	 * @var integer
+	 * @var int
 	 */
-	protected $m_intMarginRight = 0;
+	protected int $m_intMarginRight = 0;
 	
 	/**
 	 * True if this is the last letter of the word
 	 * 
-	 * @var boolean
+	 * @var bool
 	 */
-	protected $m_blnLast = FALSE;
+	protected bool $m_blnLast = false;
 	
 	/**
 	 * Number of this letter.
 	 * 
-	 * @var integer
+	 * @var int
 	 */
-	protected $m_intNumber = 0;
+	protected int $m_intNumber = 0;
 	
 // ****************************************************************
 
@@ -108,54 +109,54 @@ class Letter {
 	* @param string $i_strValue
 	* @return void
 	*/
-	public function setValue($i_strValue){
+	public function setValue(string $i_strValue): void {
 		$this->m_strValue = $i_strValue;
 	}
 	
 	/**
 	* Returns the m_strValue
 	*
-	* @return string $m_strValue
+	* @return string
 	*/
-	public function getValue(){
+	public function getValue(): string {
 		return $this->m_strValue;
 	}
 	
 	/**
 	* Sets the m_intLength
 	*
-	* @param integer $i_intLength
+	* @param int $i_intLength
 	* @return void
 	*/
-	public function setLength($i_intLength){
+	public function setLength(int $i_intLength): void {
 		$this->m_intLength = $i_intLength;
 	}
 	
 	/**
 	* Returns the m_intLength
 	*
-	* @return integer $m_intLength
+	* @return int
 	*/
-	public function getLength(){
+	public function getLength(): int {
 		return $this->m_intLength;
 	}
 	
 	/**
 	* Sets the m_blnAutofocus
 	*
-	* @param boolean $i_blnAutofocus
+	* @param bool $i_blnAutofocus
 	* @return void
 	*/
-	public function setAutofocus($i_blnAutofocus){
+	public function setAutofocus(bool $i_blnAutofocus): void {
 		$this->m_blnAutofocus = $i_blnAutofocus;
 	}
 	
 	/**
 	* Returns the m_blnAutofocus
 	*
-	* @return boolean $m_blnAutofocus
+	* @return bool
 	*/
-	public function getAutofocus(){
+	public function getAutofocus(): bool {
 		return $this->m_blnAutofocus;
 	}
 	
@@ -165,16 +166,16 @@ class Letter {
 	* @param string $i_strCorrectValue
 	* @return void
 	*/
-	public function setCorrectValue($i_strCorrectValue){
+	public function setCorrectValue(string $i_strCorrectValue): void {
 		$this->m_strCorrectValue = $i_strCorrectValue;
 	}
 	
 	/**
 	* Returns the m_strCorrectValue
 	*
-	* @return string $m_strCorrectValue
+	* @return string
 	*/
-	public function getCorrectValue(){
+	public function getCorrectValue(): string {
 		return $this->m_strCorrectValue;
 	}
 	
@@ -184,16 +185,16 @@ class Letter {
 	* @param string $i_strName
 	* @return void
 	*/
-	public function setName($i_strName){
+	public function setName(string $i_strName): void {
 		$this->m_strName = $i_strName;
 	}
 	
 	/**
 	* Returns the m_strName
 	*
-	* @return string $m_strName
+	* @return string
 	*/
-	public function getName(){
+	public function getName(): string {
 		return $this->m_strName;
 	}
 	
@@ -203,23 +204,25 @@ class Letter {
 	* @param \Loss\Glmorphquiz\Domain\Model\Word $i_objWord
 	* @return void
 	*/
-	public function setWord($i_objWord){
+	public function setWord(\Loss\Glmorphquiz\Domain\Model\Word $i_objWord): void {
 		$this->m_objWord = $i_objWord;
 	}
 	
 	/**
 	* Returns the m_objWord
 	*
-	* @return \Loss\Glmorphquiz\Domain\Model\Word $m_objWord
+	* @return \Loss\Glmorphquiz\Domain\Model\Word|null
 	*/
-	public function getWord(){
+	public function getWord(): ?\Loss\Glmorphquiz\Domain\Model\Word {
 		return $this->m_objWord;
 	}
 	
 	/**
 	 * Get the width of the Input box of the letter
+	 *
+	 * @return int
 	 */
-	public function getWidthBox() {
+	public function getWidthBox(): int {
 		// Offset + (count of letters * width of letters)
 		return $this->m_objWord->getWidth_letter_offset() + 
 			   ($this->m_intLength * $this->getWord()->getWidth_letter());
@@ -229,38 +232,38 @@ class Letter {
 	/**
 	* Sets the m_intMarginRight
 	*
-	* @param integer $i_intMarginRight
+	* @param int $i_intMarginRight
 	* @return void
 	*/
-	public function setMarginRight($i_intMarginRight){
+	public function setMarginRight(int $i_intMarginRight): void {
 		$this->m_intMarginRight = $i_intMarginRight;
 	}
 	
 	/**
 	* Returns the i_intMarginRight
 	*
-	* @return integer $i_intMarginRight
+	* @return int
 	*/
-	public function getMarginRight(){
+	public function getMarginRight(): int {
 		return $this->m_intMarginRight;
 	}
 	
 	/**
 	* Sets the m_blnLast
 	*
-	* @param boolean $i_blnLast
+	* @param bool $i_blnLast
 	* @return void
 	*/
-	public function setLast($i_blnLast){
+	public function setLast(bool $i_blnLast): void {
 		$this->m_blnLast = $i_blnLast;
 	}
 	
 	/**
 	* Returns the m_blnLast
 	*
-	* @return boolean
+	* @return bool
 	*/
-	public function getLast(){
+	public function getLast(): bool {
 		return $this->m_blnLast;
 	}
 	
@@ -268,7 +271,7 @@ class Letter {
 	 * Returns the javascript call for the key down event
 	 * @return string
 	 */
-	public function getOnKeyDown() {
+	public function getOnKeyDown(): string {
 		
 		// the returning string
 		$lv_strReturn = '';
@@ -287,7 +290,7 @@ class Letter {
 	 * Returns the javascript call for the key up event
 	 * @return string
 	 */
-	public function getOnKeyUp() {
+	public function getOnKeyUp(): string {
 		// the returning string
 		$lv_strReturn = '';
 		
@@ -305,8 +308,10 @@ class Letter {
 	
 	/**
 	 * Returns javascript call for onkeypress event
+	 *
+	 * @return string
 	 */
-	public function getOnKeyPress() {
+	public function getOnKeyPress(): string {
 		return "onkeypress=\"glmorphKeyPress(event)\"";
 	}
 	
@@ -314,7 +319,7 @@ class Letter {
 	 * returns the name of the next letter.
 	 * @return string
 	 */
-	public function getNextName() {
+	public function getNextName(): string {
 		// the number at the end
 		$lv_intNumber = 0;
 		
@@ -326,7 +331,7 @@ class Letter {
 	 * returns the name of the letter bevore.
 	 * @return string
 	 */
-	public function getBevoreName() {
+	public function getBevoreName(): string {
 		// the number at the end
 		$lv_intNumber = 0;
 		
@@ -337,19 +342,19 @@ class Letter {
 	/**
 	* Sets the m_intNumber
 	*
-	* @param integer $i_intNumber
+	* @param int $i_intNumber
 	* @return void
 	*/
-	public function setNumber($i_intNumber){
+	public function setNumber(int $i_intNumber): void {
 		$this->m_intNumber = $i_intNumber;
 	}
 	
 	/**
 	* Returns the m_intNumber
 	*
-	* @return integer
+	* @return int
 	*/
-	public function getNumber(){
+	public function getNumber(): int {
 		return $this->m_intNumber;
 	}
 	

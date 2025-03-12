@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace Loss\Glmorphquiz\Controller;
 
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -7,6 +8,13 @@ use Loss\Glmorphquiz\Domain\Model\Letter;
 use TYPO3\CMS\Core\Utility\PathUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Page\PageRenderer;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
+use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
+use Psr\Http\Message\ResponseInterface;
+use Loss\Glmorphquiz\Domain\Repository\WordRepository;
+use Loss\Glmorphquiz\Domain\Repository\FinishingtextRepository;
+use Loss\Glmorphquiz\Domain\Model\MorphQuiz;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /***************************************************************
  *
@@ -80,25 +88,21 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 	
 	
 	/**
-	 * m_objWordRepository
-	 *
-	 * @var \Loss\Glmorphquiz\Domain\Repository\WordRepository
+	 * @var WordRepository
 	 */
-	protected $m_objWordRepository;
+	protected WordRepository $m_objWordRepository;
 	
 	/**
-	 * $m_objFinishingtextRepository
-	 *
-	 * @var \Loss\Glmorphquiz\Domain\Repository\FinishingtextRepository
+	 * @var FinishingtextRepository
 	 */
-	protected $m_objFinishingtextRepository;
+	protected FinishingtextRepository $m_objFinishingtextRepository;
 	
 	/**
 	 * Inject a word repository to enable DI
 	 *
-	 * @param \Loss\Glmorphquiz\Domain\Repository\WordRepository $wordRepository
+	 * @param WordRepository $wordRepository
 	 */
-	public function injectPairsRepository(\Loss\Glmorphquiz\Domain\Repository\WordRepository $wordRepository)
+	public function injectPairsRepository(WordRepository $wordRepository): void
 	{
 	    $this->m_objWordRepository = $wordRepository;
 	}
@@ -107,9 +111,9 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 	/**
 	 * Inject a finishing text repository to enable DI
 	 *
-	 * @param \Loss\Glmorphquiz\Domain\Repository\FinishingtextRepository $finishingtextRepository
+	 * @param FinishingtextRepository $finishingtextRepository
 	 */
-	public function injectFinishingtextRepository(\Loss\Glmorphquiz\Domain\Repository\FinishingtextRepository $finishingtextRepository)
+	public function injectFinishingtextRepository(FinishingtextRepository $finishingtextRepository): void
 	{
 	    $this->m_objFinishingtextRepository = $finishingtextRepository;
 	}
@@ -130,7 +134,7 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 	 * 
 	 * @return void
 	 */
-	public function listAction() {
+	public function listAction() : ResponseInterface {
 		// the morphing quiz game
 		/* @var $l_objMorphingQuizData \Loss\Glmorphquiz\Domain\Model\MorphQuiz */
 		$l_objMorphingQuizData = NULL;
@@ -169,13 +173,16 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 															  MorphingQuizController::c_strExtensionName );
 			
 			// show the error message
-			$this->addFlashMessage($l_strErrorText, $l_strTitleText, AbstractMessage::ERROR, TRUE);
+			$this->addFlashMessage($l_strErrorText, $l_strTitleText, ContextualFeedbackSeverity::ERROR, TRUE);
 			
 		// if everything is OK
 		} else {
 			// assign the data to the view
 			$this->view->assign('morphquiz', $l_objMorphingQuizData);
 		}
+
+		// return response object
+		return $this->htmlResponse();
 	}
 	
 	/**
@@ -183,7 +190,7 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 	 *
 	 * @return void
 	 */
-	public function responseAction() {
+	public function responseAction(): ResponseInterface {
 		
 		// the object storage with the morphing quiz game
 		/* @var $l_objWordData \Loss\Glmorphquiz\Domain\Model\MorphQuiz */
@@ -197,14 +204,14 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 		$l_arrArgs = $this->request->getArguments();
 		
 		// build the object with all morphing quiz data
-		$l_objMorphingQuizData = $this->createMorpingQuizData($l_arrArgs['wordIndex'], $l_arrArgs['score']);
+		$l_objMorphingQuizData = $this->createMorpingQuizData((int)$l_arrArgs['wordIndex'], (int)$l_arrArgs['score']);
 		
 		
 		// if button next is pressed
 		if (isset($l_arrArgs['next'])) {
 			
 			// Check if the word is correct answered
-			$l_objMorphingQuizData->checkLetters($l_arrArgs, $this, $this->settings['show_last']);
+			$l_objMorphingQuizData->checkLetters($l_arrArgs, $this, (bool)$this->settings['show_last']);
 						    
 		// if the button solve is pressed
 		} else if (isset($l_arrArgs['solve'])){
@@ -214,10 +221,10 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 															MorphingQuizController::c_strExtensionName );
 
 			// show the message
-			$this->addFlashMessage($l_strMsgText, '', AbstractMessage::INFO, TRUE);
+			$this->addFlashMessage($l_strMsgText, '', ContextualFeedbackSeverity::INFO, TRUE);
 				
 			// solve the word
-			$l_objMorphingQuizData->solveWord($this->settings['show_last']);
+			$l_objMorphingQuizData->solveWord((bool)$this->settings['show_last']);
 		}
 		
 		// if this was the last word
@@ -232,19 +239,18 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 				$l_objMorphingQuizData );
 		
 		// redirect to the list action
-		$this->redirect('list');
+		return $this->redirect('list');
 	}
 
 	/**
-	 * Korrigiert Objekte aus der Session die beim deserialisieren ein __PHP_Incomplete_Class Objekt werden
-	 * @param object $i_objObject
-	 * @return object
+	 * @param object|null $i_objObject
+	 * @return object|null
 	 */
-	protected function fixSessionObject(&$i_objObject){
-	    
-	    if (is_object ($i_objObject) && get_class($i_objObject) == '__PHP_Incomplete_Class')
+	protected function fixSessionObject(?object &$i_objObject): ?object
+	{
+	    if (is_object($i_objObject) && get_class($i_objObject) == '__PHP_Incomplete_Class') {
 	        return ($i_objObject = unserialize(serialize($i_objObject)));
-	        
+	    }
 	    return $i_objObject;
 	}
 	
@@ -254,11 +260,11 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 	 * @param 	integer $i_intWordIndex 					Index of the word in input mode, starting with 0
 	 * @return 	\Loss\Glmorphquiz\Domain\Model\MorphQuiz	Object with all data for the morphing quiz game
 	 */
-	protected function createMorpingQuizData($i_intWordIndex, $i_intScore = 0) {
+	protected function createMorpingQuizData(int $i_intWordIndex, int $i_intScore = 0): MorphQuiz {
 		
 		// the returning object storage with all data of the morphing quiz game
 		/* @var $l_objRetMorphQuizData \Loss\Glmorphquiz\Domain\Model\MorphQuiz */
-		$l_objRetMorphQuizData = $this->objectManager->get('Loss\Glmorphquiz\Domain\Model\MorphQuiz');
+	    $l_objRetMorphQuizData = GeneralUtility::makeInstance('Loss\Glmorphquiz\Domain\Model\MorphQuiz');
 		
 		// the object storage with all word objects
 		/* @var $l_objWordData \TYPO3\CMS\Extbase\Persistence\ObjectStorage */
@@ -275,7 +281,7 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 		$l_blnVisible = FALSE;
 		
 		// get all of the words of the morphing quiz
-		$l_objWordData = $this->m_objWordRepository->getMorphQuizWords($this->settings['firstWord'], $this);
+		$l_objWordData = $this->m_objWordRepository->getMorphQuizWords((int)$this->settings['firstWord'], $this);
 		
 		// go through every word in the game
 		foreach ($l_objWordData as $l_objWord) {
@@ -289,43 +295,43 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 			// if points are not set
 			if ($l_objWord->getPoints() === 0) {
 			    // set the points from the overall settings
-				$l_objWord->setPoints($this->settings['points']);
+				$l_objWord->setPoints((int)$this->settings['points']);
 			}
 			
 			// if minus points are not set
 			if ($l_objWord->getMinus_points() === 0) {
 				// set the value from the overall settings
-				$l_objWord->setMinus_points($this->settings['minus_points']);
+				$l_objWord->setMinus_points((int)$this->settings['minus_points']);
 			}
 				
 			// if fontsize is not set
 			if ($l_objWord->getFontsize() === 0) {
 				// set the value from the overall settings
-				$l_objWord->setFontsize($this->settings['fontsize']);
+				$l_objWord->setFontsize((int)$this->settings['fontsize']);
 			}
 				
 			// if height of a letter is not set
 			if ($l_objWord->getHeight_letter() === 0) {
 				// set the value from the overall settings
-				$l_objWord->setHeight_letter($this->settings['height_letter']);
+			    $l_objWord->setHeight_letter((int)$this->settings['height_letter']);
 			}
 				
 			// if width of the single letter is not set
 			if ($l_objWord->getWidth_letter() === 0) {
 				// set the value from the overall settings
-				$l_objWord->setWidth_letter($this->settings['width_letter']);
+			    $l_objWord->setWidth_letter((int)$this->settings['width_letter']);
 			}
 				
 			// if letter width offset is not set
 			if ($l_objWord->getWidth_letter_offset() === 0) {
 				// set the value from the overall settings
-				$l_objWord->setWidth_letter_offset($this->settings['width_letter_offset']);
+			    $l_objWord->setWidth_letter_offset((int)$this->settings['width_letter_offset']);
 			}
 							
 			// if the animation speed is not set in the word
 			if ($l_objWord->getAnimation_speed() === 0) {
 				// set the value from the overall settings
-				$l_objWord->setAnimation_speed($this->settings['animation_speed']);
+			    $l_objWord->setAnimation_speed((int)$this->settings['animation_speed']);
 			}
 			
 			// if this is one of the already guessed words 
@@ -357,7 +363,7 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 		$l_objRetMorphQuizData->setWords($l_objWordData);
 		
 		// set the first collumn width
-		$l_objRetMorphQuizData->setFirstcolWidth($this->settings['firstcol_width']);
+		$l_objRetMorphQuizData->setFirstcolWidth((int)$this->settings['firstcol_width']);
 			
 		// if alternate arrow image is set
 		if ($this->settings['arrowFile'] != '') {
@@ -375,7 +381,7 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 		}
 			
 		// set the width of the arrow image
-		$l_objRetMorphQuizData->setArrowWidth($this->settings['arrow_width']);
+		$l_objRetMorphQuizData->setArrowWidth((int)$this->settings['arrow_width']);
 		
 		// set the index of the current word in edit mode
 		$l_objRetMorphQuizData->setWordIndex($i_intWordIndex);
@@ -411,7 +417,7 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 	protected function getLettersOfWord(\Loss\Glmorphquiz\Domain\Model\Word $i_objWord, $i_blnVisible = FALSE) {
 		// the object storage with all the letters
 		/* @var $l_objLetters \TYPO3\CMS\Extbase\Persistence\ObjectStorage */
-		$l_objLetters = $this->objectManager->get('TYPO3\CMS\Extbase\Persistence\ObjectStorage');
+	    $l_objLetters = GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Persistence\ObjectStorage');
 		
 		// a letter object
 		/* @var $l_objLetter \Loss\Glmorphquiz\Domain\Model\Letter */
@@ -440,14 +446,14 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 			// if there is an edit mask into the current index 
 			} else {
 				// read the length of the letter from the mask
-				$l_intCurrentLength = substr($i_objWord->getMask(), $l_intIndexMask, 1);
+			    $l_intCurrentLength = (int)substr($i_objWord->getMask(), $l_intIndexMask, 1);
 			}
 			
 			// read the current letter
 			$l_strCurrentLetter = substr($i_objWord->getValue(), $l_intIndexWord, $l_intCurrentLength);
 			
 			// create the letter object
-			$l_objLetter = $this->objectManager->get('Loss\Glmorphquiz\Domain\Model\Letter');
+			$l_objLetter = GeneralUtility::makeInstance('Loss\Glmorphquiz\Domain\Model\Letter');
 			
 			// set the properties
 			$l_objLetter->setWord($i_objWord);
@@ -489,11 +495,11 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 	
 	
 	/**
-	 * returns the length of the edit mask
 	 * @param string $i_strMask
-	 * @return integer
+	 * @return int
 	 */
-	protected function getLenghtOfMask($i_strMask) {
+	protected function getLenghtOfMask(string $i_strMask): int
+	{
 		
 		// if edit mask is empty
 		if ($i_strMask == '0') {
@@ -510,9 +516,10 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 	 * Check if a special value already exists in the additional header data
 	 * @param 	array 	$i_arrAdditionalHeaderData	The array with all additional header datas
 	 * @param 	string 	$i_strValue					The value vor which we should search
-	 * @return	boolean								True if we have found the value
+	 * @return	bool								True if we have found the value
 	 */
-	protected function existAdditionalHeaderData($i_arrAdditionalHeaderData, $i_strValue) {
+	protected function existAdditionalHeaderData(array $i_arrAdditionalHeaderData, string $i_strValue): bool
+	{
 		// one line in the header data
 		$l_strHeaderLine = '';
 		// the returning value
@@ -532,10 +539,11 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 	
 	/**
 	 * Check the morphing game for errors
-	 * @param \Loss\Glmorphquiz\Domain\Model\MorphQuiz $i_objMorphGame
+	 * @param MorphQuiz $i_objMorphGame
 	 * @return string 	Error message, empty if there is nor error
 	 */
-	protected function checkMorphQuiz(\Loss\Glmorphquiz\Domain\Model\MorphQuiz $i_objMorphGame) {
+	protected function checkMorphQuiz(MorphQuiz $i_objMorphGame): string
+	{
 
 		// one word of the quiz
 		/* @var $l_objWord \Loss\Glmorphquiz\Domain\Model\Word */
@@ -635,15 +643,18 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 		    
 		    $l_objWordBevore = $l_objWord;
 		}
+		
+		// if no error, return empty string
+		return '';
 	}
 	
 	/**
 	 * Set the overall width of the collumns
-	 * @param \Loss\Glmorphquiz\Domain\Model\MorphQuiz $i_objMorphQuiz
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $i_objLetters
+	 * @param MorphQuiz $i_objMorphQuiz
+	 * @param ObjectStorage $i_objLetters
 	 */
-	protected function setOverallColWidth(\Loss\Glmorphquiz\Domain\Model\MorphQuiz $i_objMorphQuiz, 
-										  \TYPO3\CMS\Extbase\Persistence\ObjectStorage $i_objLetters) {
+	protected function setOverallColWidth(MorphQuiz $i_objMorphQuiz, ObjectStorage $i_objLetters): void
+	{
 	
 		
 		// a letter object
@@ -679,11 +690,11 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 	
 	/**
 	 * Sets the margin-right propterty to come to the overall collumn width for all letters
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $i_objWords
-	 * @param \Loss\Glmorphquiz\Domain\Model\MorphQuiz $i_objMorphQuiz
+	 * @param ObjectStorage $i_objWords
+	 * @param MorphQuiz $i_objMorphQuiz
 	 */
-	protected function setMargin4Letters(	\TYPO3\CMS\Extbase\Persistence\ObjectStorage $i_objWords, 
-											 	\Loss\Glmorphquiz\Domain\Model\MorphQuiz $i_objMorphQuiz) {
+	protected function setMargin4Letters(ObjectStorage $i_objWords, MorphQuiz $i_objMorphQuiz): void
+	{
 		// one single word object
 		/* @var $l_objWord \Loss\Glmorphquiz\Domain\Model\Word */
 		$l_objWord = NULL;
@@ -714,10 +725,11 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 	/**
 	 * Returns the finishingtext
 	 *
-	 * @param \Loss\Glmorphquiz\Domain\Model\MorphQuiz $i_objMorphingQuizData The context of the game.
+	 * @param MorphQuiz $i_objMorphingQuizData The context of the game.
 	 * @return string The finishingtext
 	 */
-	public function getFinishingtext(\Loss\Glmorphquiz\Domain\Model\MorphQuiz $i_objMorphingQuizData){
+	public function getFinishingtext(MorphQuiz $i_objMorphingQuizData): string
+	{
 	
 		// the returning ObjectStorage
 		/* @var $l_objObjectStorage  \TYPO3\CMS\Extbase\Persistence\ObjectStorage */

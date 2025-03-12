@@ -16,7 +16,6 @@ plugin.tx_glmorphquiz {
 		layoutRootPath = EXT:glmorphquiz/Resources/Private/Layouts/
 	}
 	libraries{
-		#cat=plugin.tx_glcrossword/libraries; type=boolean; label=LLL:EXT:glcrossword/locallang.xlf:glcrossword.constants.inlcudeJQuery
 		inlcudeJQuery = true
 	}
 }

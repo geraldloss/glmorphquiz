@@ -1,6 +1,16 @@
 # ==============================================
 # FE-Plugin configuration for EXT:glmorphquiz
 # ==============================================
+tt_content.list.20.glmorphquiz_pi1 = USER
+tt_content.list.20.glmorphquiz_pi1 {
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    extensionName = Glmorphquiz
+    pluginName = Pi1
+    vendorName = Loss
+    controller = Glmorphquiz
+    action = list
+}
+
 plugin.tx_glmorphquiz {
 	view {
 		templateRootPath {

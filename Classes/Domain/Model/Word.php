@@ -1,7 +1,9 @@
 <?php
+declare(strict_types=1);
 namespace Loss\Glmorphquiz\Domain\Model;
 
 use TYPO3\CMS\Extbase\Annotation\Validate;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /***************************************************************
  *
@@ -36,130 +38,132 @@ class Word extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * The name of the word for internal use
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage	 
-	 * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+	 * @var ObjectStorage<\Loss\Glmorphquiz\Domain\Model\Letter>
+	 * @Validate("NotEmpty")
 	 */
-	protected $m_objLetters = NULL;
+	protected ObjectStorage $m_objLetters;
 	
 	/**
 	 * The name of the word for internal use
 	 *
 	 * @var string
-	 * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+	 * @Validate("NotEmpty")
 	 */
-	protected $name = '';
+	protected string $name = '';
 
 	/**
-	 * the word itself
+	 * The word itself
 	 *
 	 * @var string
-	 * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+	 * @Validate("NotEmpty")
 	 */
-	protected $value = '';
+	protected string $value = '';
 
 	/**
-	 * The previous word bevore this
+	 * The next word after this
 	 *
-	 * @var integer
-	 * @TYPO3\CMS\Extbase\Annotation\Validate("Integer")
+	 * @var int
+	 * @Validate("Integer")
 	 */
-	protected $nextWord = 0;
-	
+	protected int $nextWord = 0;
 	
 	/**
-	 * The previous word bevore this
+	 * The mask of the word
 	 *
 	 * @var string
-	 * @TYPO3\CMS\Extbase\Annotation\Validate("String")
+	 * @Validate("String")
 	 */
-	protected $mask = 0;
+	protected string $mask = '';
 	
 	/**
-	 * Fontsize
+	 * Font size
 	 *
-	 * @var integer
-	 * @TYPO3\CMS\Extbase\Annotation\Validate("Integer")
+	 * @var int
+	 * @Validate("Integer")
 	 */
-	protected $fontsize = 0;
+	protected int $fontsize = 0;
 	
 	/**
 	 * Height of a letter 
 	 *
-	 * @var integer
-	 * @TYPO3\CMS\Extbase\Annotation\Validate("Integer")
+	 * @var int
+	 * @Validate("Integer")
 	 */
-	protected $height_letter = 0;
-	
+	protected int $height_letter = 0;
 	
 	/**
 	 * Width of a letter 
 	 *
-	 * @var integer
-	 * @TYPO3\CMS\Extbase\Annotation\Validate("Integer")
+	 * @var int
+	 * @Validate("Integer")
 	 */
-	protected $width_letter = 0;
-	
+	protected int $width_letter = 0;
 	
 	/**
 	 * Offset of the width of a letter 
 	 *
-	 * @var integer
-	 * @TYPO3\CMS\Extbase\Annotation\Validate("Integer")
+	 * @var int
+	 * @Validate("Integer")
 	 */
-	protected $width_letter_offset = 0;
+	protected int $width_letter_offset = 0;
 	
 	/**
 	 * Points for correct answer 
 	 *
-	 * @var integer
-	 * @TYPO3\CMS\Extbase\Annotation\Validate("Integer")
+	 * @var int
+	 * @Validate("Integer")
 	 */
-	protected $points = 0;
+	protected int $points = 0;
 	
 	/**
 	 * Input mode of the word.
 	 *
-	 * @var boolean
+	 * @var bool
 	 */
-	protected $m_bln_inputmode = FALSE;
+	protected bool $m_bln_inputmode = false;
 	
-
 	/**
 	 * Animation speed 
 	 *
-	 * @var integer
-	 * @TYPO3\CMS\Extbase\Annotation\Validate("Integer")
+	 * @var int
+	 * @Validate("Integer")
 	 */
-	protected $animation_speed = 0;
+	protected int $animation_speed = 0;
 	
+	/**
+	 * Points for wrong answer 
+	 *
+	 * @var int
+	 */
+	protected int $minus_points = 0;
 	
 //	**************************************************************************************************
 	
 	/**
 	* Returns the m_objLetters
 	*
-	* @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage $m_objLetters
+	* @return ObjectStorage<\Loss\Glmorphquiz\Domain\Model\Letter>
 	*/
-	public function getLetters(){
+	public function getLetters(): ObjectStorage {
 		return $this->m_objLetters;
 	}
 	
 	/**
 	* Sets the m_objLetters
 	*
-	* @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $m_objLetters
+	* @param ObjectStorage<\Loss\Glmorphquiz\Domain\Model\Letter> $i_objLetters
 	* @return void
 	*/
-	public function setLetters(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $i_objLetters){
+	public function setLetters(ObjectStorage $i_objLetters): void {
 		$this->m_objLetters = $i_objLetters;
 	}
 	
 	/**
 	 * Returns the name
 	 *
-	 * @return string $name
+	 * @return string
 	 */
-	public function getName() {
+	public function getName(): string {
 		return $this->name;
 	}
 
@@ -169,16 +173,16 @@ class Word extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param string $name
 	 * @return void
 	 */
-	public function setName($name) {
+	public function setName(string $name): void {
 		$this->name = $name;
 	}
 
 	/**
 	 * Returns the value
 	 *
-	 * @return string $value
+	 * @return string
 	 */
-	public function getValue() {
+	public function getValue(): string {
 		return $this->value;
 	}
 
@@ -188,29 +192,28 @@ class Word extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param string $value
 	 * @return void
 	 */
-	public function setValue($value) {
+	public function setValue(string $value): void {
 		$this->value = $value;
 	}
 
 	/**
 	 * Returns the nextWord
 	 *
-	 * @return integer $nextWord
+	 * @return int
 	 */
-	public function getNextWord() {
+	public function getNextWord(): int {
 		return $this->nextWord;
 	}
 
 	/**
 	 * Sets the nextWord
 	 *
-	 * @param integer $nextWord
+	 * @param int $nextWord
 	 * @return void
 	 */
-	public function setNextWord($nextWord) {
+	public function setNextWord(int $nextWord): void {
 		$this->nextWord = $nextWord;
 	}
-	
 	
 	/**
 	* Sets the mask
@@ -218,188 +221,181 @@ class Word extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	* @param string $mask
 	* @return void
 	*/
-	public function setMask($mask){
+	public function setMask(string $mask): void {
 		$this->mask = $mask;
 	}
 	
 	/**
 	* Returns the mask
 	*
-	* @return string $mask
+	* @return string
 	*/
-	public function getMask(){
+	public function getMask(): string {
 		return $this->mask;
 	}
 	
 	/**
 	* Sets the fontsize
 	*
-	* @param integer $fontsize
+	* @param int $fontsize
 	* @return void
 	*/
-	public function setFontsize($fontsize){
+	public function setFontsize(int $fontsize): void {
 		$this->fontsize = $fontsize;
 	}
 	
 	/**
 	* Returns the fontsize
 	*
-	* @return integer $fontsize
+	* @return int
 	*/
-	public function getFontsize(){
+	public function getFontsize(): int {
 		return $this->fontsize;
 	}
 	
 	/**
-	* Sets the heigth_letter
+	* Sets the height_letter
 	*
-	* @param integer $heigth_letter
+	* @param int $height_letter
 	* @return void
 	*/
-	public function setHeight_letter($height_letter){
+	public function setHeight_letter(int $height_letter): void {
 		$this->height_letter = $height_letter;
 	}
 	
 	/**
-	* Returns the heigth_letter
+	* Returns the height_letter
 	*
-	* @return integer $heigth_letter
+	* @return int
 	*/
-	public function getHeight_letter(){
+	public function getHeight_letter(): int {
 		return $this->height_letter;
 	}
 	
 	/**
-	 * Points for wrong answer 
-	 *
-	 * @var integer
-	 */
-	protected $minus_points = 0;
-	
-	/**
 	* Sets the width_letter
 	*
-	* @param integer $width_letter
+	* @param int $width_letter
 	* @return void
 	*/
-	public function setWidth_letter($width_letter){
+	public function setWidth_letter(int $width_letter): void {
 		$this->width_letter = $width_letter;
 	}
 	
 	/**
 	* Returns the width_letter
 	*
-	* @return integer $width_letter
+	* @return int
 	*/
-	public function getWidth_letter(){
+	public function getWidth_letter(): int {
 		return $this->width_letter;
 	}
 	
 	/**
 	* Sets the width_letter_offset
 	*
-	* @param integer $width_letter_offset
+	* @param int $width_letter_offset
 	* @return void
 	*/
-	public function setWidth_letter_offset($width_letter_offset){
+	public function setWidth_letter_offset(int $width_letter_offset): void {
 		$this->width_letter_offset = $width_letter_offset;
 	}
 	
 	/**
 	* Returns the width_letter_offset
 	*
-	* @return integer $width_letter_offset
+	* @return int
 	*/
-	public function getWidth_letter_offset(){
+	public function getWidth_letter_offset(): int {
 		return $this->width_letter_offset;
 	}
 	
 	/**
 	* Sets the points
 	*
-	* @param integer $points
+	* @param int $points
 	* @return void
 	*/
-	public function setPoints($points){
+	public function setPoints(int $points): void {
 		$this->points = $points;
 	}
 	
 	/**
 	* Returns the points
 	*
-	* @return integer $points
+	* @return int
 	*/
-	public function getPoints(){
+	public function getPoints(): int {
 		return $this->points;
 	}
 	
 	/**
 	* Sets the minus_points
 	*
-	* @param integer $minus_points
+	* @param int $minus_points
 	* @return void
 	*/
-	public function setMinus_points($minus_points){
+	public function setMinus_points(int $minus_points): void {
 		$this->minus_points = $minus_points;
 	}
 	
 	/**
 	* Returns the minus_points
 	*
-	* @return integer $minus_points
+	* @return int
 	*/
-	public function getMinus_points(){
+	public function getMinus_points(): int {
 		return $this->minus_points;
 	}
 	
 	/**
 	* Sets the m_bln_inputmode
 	*
-	* @param boolean $m_bln_inputmode
+	* @param bool $i_bln_inputmode
 	* @return void
 	*/
-	public function setInputmode($i_bln_inputmode){
+	public function setInputmode(bool $i_bln_inputmode): void {
 		$this->m_bln_inputmode = $i_bln_inputmode;
 	}
 	
 	/**
 	* Returns the m_bln_inputmode
 	*
-	* @return boolean $m_bln_inputmode
+	* @return bool
 	*/
-	public function getInputmode(){
+	public function getInputmode(): bool {
 		return $this->m_bln_inputmode;
 	}
 
 	/**
 	* Sets the animation_speed
 	*
-	* @param integer $animation_speed
+	* @param int $animation_speed
 	* @return void
 	*/
-	public function setAnimation_speed($animation_speed){
+	public function setAnimation_speed(int $animation_speed): void {
 		$this->animation_speed = $animation_speed;
 	}
 	
 	/**
 	* Returns the animation_speed
 	*
-	* @return integer $animation_speed
+	* @return int
 	*/
-	public function getAnimation_speed(){
+	public function getAnimation_speed(): int {
 		return $this->animation_speed;
 	}
 
 	/**
 	 * Returns a letter of the word by an index
-	 * @param integer $i_intIndex
-	 * @return \Loss\Glmorphquiz\Domain\Model\Letter
+	 * @param int $i_intIndex
+	 * @return \Loss\Glmorphquiz\Domain\Model\Letter|null
 	 */
-	public function getLetterByIndex($i_intIndex) {
+	public function getLetterByIndex(int $i_intIndex): ?\Loss\Glmorphquiz\Domain\Model\Letter {
 	
-		// the returnung letter
-		/* @var $l_objLetter1 \Loss\Glmorphquiz\Domain\Model\Letter */
-		$l_objLetter = NULL;
+		// the returning letter
+		/* @var $l_objLetter \Loss\Glmorphquiz\Domain\Model\Letter */
+		$l_objLetter = null;
 		// the current index
 		$l_intCurrentIndex = 0;
 	
@@ -414,7 +410,7 @@ class Word extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 			$l_intCurrentIndex++;
 		}
 	
-		return NULL;
+		return null;
 	}
 }
 

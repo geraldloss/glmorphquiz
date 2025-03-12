@@ -1,8 +1,11 @@
 <?php
+declare(strict_types=1);
 namespace Loss\Glmorphquiz\Domain\Model;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use Loss\Glmorphquiz\Controller\MorphingQuizController;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 
 /***************************************************************
@@ -39,32 +42,32 @@ class MorphQuiz {
 	/**
 	 * All words of the morphing quiz game
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+	 * @var ObjectStorage<\Loss\Glmorphquiz\Domain\Model\Word>
 	 */
-	protected $m_objWords = NULL;
+	protected ObjectStorage $m_objWords;
 	
 	/**
 	 * Array with the overall width of every collumn
 	 * index: collumn index beginning with 0
 	 * width: Width of the collumn in px
 	 *
-	 * @var array
+	 * @var array<int>
 	 */
-	protected $m_arrColWidth = array();
+	protected array $m_arrColWidth = [];
 	
 	/**
 	 * The width of the first collumn with the arrow.
 	 *
-	 * @var integer
+	 * @var int
 	 */
-	protected $m_intFirstcolWidth = 0;
+	protected int $m_intFirstcolWidth = 0;
 
 	/**
 	 * The width of the arrow image.
 	 *
-	 * @var integer
+	 * @var int
 	 */
-	protected $m_intArrowWidth = 0;
+	protected int $m_intArrowWidth = 0;
 
 	
 	/**
@@ -72,33 +75,33 @@ class MorphQuiz {
 	 *
 	 * @var string
 	 */
-	protected $m_strArrowFile = "";
+	protected string $m_strArrowFile = "";
 
 	/**
 	 * The index of the current word in edit mode.
 	 *
-	 * @var integer
+	 * @var int
 	 */
-	protected $m_intWordIndex = 0;
+	protected int $m_intWordIndex = 0;
 	
 	
 	/**
 	 * The current score of the game.
-	 * @var integer
+	 * @var int
 	 */
-	protected $m_intScore = 0;
+	protected int $m_intScore = 0;
 	
 	/**
 	 * TRUE if the last word is solved.
-	 * @var boolean
+	 * @var bool
 	 */
-	protected $m_blnLastWord = false;
+	protected bool $m_blnLastWord = false;
 	
 	/**
 	 * The finishingtext
 	 * @var string
 	 */
-	protected $m_strFinishingtext = "";
+	protected string $m_strFinishingtext = "";
 	
 	// ******************************************************************************
 
@@ -106,142 +109,142 @@ class MorphQuiz {
 	/**
 	* Sets the firstcol_width
 	*
-	* @param integer $i_intFirstcolWidth
+	* @param int $i_intFirstcolWidth
 	* @return void
 	*/
-	public function setFirstcolWidth($i_intFirstcolWidth){
+	public function setFirstcolWidth(int $i_intFirstcolWidth): void {
 		$this->m_intFirstcolWidth = $i_intFirstcolWidth;
 	}
 	
 	/**
 	* Returns the m_intFirstcolWidth
 	*
-	* @return integer $m_intFirstcolWidth
+	* @return int
 	*/
-	public function getFirstcolWidth(){
+	public function getFirstcolWidth(): int {
 		return $this->m_intFirstcolWidth;
 	}
 	
 	/**
 	* Sets the m_intArrowWidth
 	*
-	* @param integer $i_intArrowWidth
+	* @param int $i_intArrowWidth
 	* @return void
 	*/
-	public function setArrowWidth($i_intArrowWidth){
+	public function setArrowWidth(int $i_intArrowWidth): void {
 		$this->m_intArrowWidth = $i_intArrowWidth;
 	}
 	
 	/**
 	* Returns the m_intArrowWidth
 	*
-	* @return integer $m_intArrowWidth
+	* @return int
 	*/
-	public function getArrowWidth(){
+	public function getArrowWidth(): int {
 		return $this->m_intArrowWidth;
 	}
 	
 	/**
 	* Sets the m_strArrowFile
 	*
-	* @param string i_strArrowFile
+	* @param string $i_strArrowFile
 	* @return void
 	*/
-	public function setArrowFile($i_strArrowFile){
+	public function setArrowFile(string $i_strArrowFile): void {
 		$this->m_strArrowFile = $i_strArrowFile;
 	}
 	
 	/**
 	* Returns the m_strArrowFile
 	*
-	* @return string $i_strArrowFile
+	* @return string
 	*/
-	public function getArrowFile(){
+	public function getArrowFile(): string {
 		return $this->m_strArrowFile;
 	}
 	
 	/**
 	* Sets the m_objWords
 	*
-	* @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $m_objWords
+	* @param ObjectStorage<\Loss\Glmorphquiz\Domain\Model\Word> $i_objWords
 	* @return void
 	*/
-	public function setWords(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $i_objWords){
+	public function setWords(ObjectStorage $i_objWords): void {
 		$this->m_objWords = $i_objWords;
 	}
 	
 	/**
 	* Returns the m_objWords
 	*
-	* @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage $m_objWords
+	* @return ObjectStorage<\Loss\Glmorphquiz\Domain\Model\Word>
 	*/
-	public function getWords(){
+	public function getWords(): ObjectStorage {
 		return $this->m_objWords;
 	}
 	
 	/**
 	* Returns the total space which is left between the arrow and the borders.
 	*
-	* @return integer 
+	* @return int
 	*/
-	public function getFirstColSpace(){
+	public function getFirstColSpace(): int {
 		return $this->getFirstcolWidth() - $this->getArrowWidth();
 	}
 	
 	/**
 	* Sets the m_arrColWidth
 	*
-	* @param array $m_arrColWidth
+	* @param array<int> $i_arrColWidth
 	* @return void
 	*/
-	public function setColWidth($i_arrColWidth){
+	public function setColWidth(array $i_arrColWidth): void {
 		$this->m_arrColWidth = $i_arrColWidth;
 	}
 	
 	/**
 	* Returns the m_arrColWidth
 	*
-	* @return array $m_arrColWidth
+	* @return array<int>
 	*/
-	public function getColWidth(){
+	public function getColWidth(): array {
 		return $this->m_arrColWidth;
 	}
 	
 	/**
 	* Sets the m_intWordIndex
 	*
-	* @param integer $i_intWordIndex
+	* @param int $i_intWordIndex
 	* @return void
 	*/
-	public function setWordIndex($i_intWordIndex){
+	public function setWordIndex(int $i_intWordIndex): void {
 		$this->m_intWordIndex = $i_intWordIndex;
 	}
 	
 	/**
 	* Returns the m_intWordIndex
 	*
-	* @return integer $m_intWordIndex
+	* @return int
 	*/
-	public function getWordIndex(){
+	public function getWordIndex(): int {
 		return $this->m_intWordIndex;
 	}
 	
 	/**
 	* Sets the m_blnLastWord
 	*
-	* @param boolean $i_blnLastWord
+	* @param bool $i_blnLastWord
 	* @return void
 	*/
-	public function setLastWord($i_blnLastWord){
+	public function setLastWord(bool $i_blnLastWord): void {
 		$this->m_blnLastWord = $i_blnLastWord;
 	}
 	
 	/**
 	* Returns the m_blnLastWord
 	*
-	* @return boolean $m_blnLastWord
+	* @return bool
 	*/
-	public function getLastWord(){
+	public function getLastWord(): bool {
 		return $this->m_blnLastWord;
 	}
 	
@@ -251,28 +254,26 @@ class MorphQuiz {
 	* @param string $i_strFinishingtext
 	* @return void
 	*/
-	public function setFinishingtext($i_strFinishingtext){
+	public function setFinishingtext(string $i_strFinishingtext): void {
 		$this->m_strFinishingtext = $i_strFinishingtext;
 	}
 	
 	/**
 	* Returns the m_strFinishingtext
 	*
-	* @return string $m_strFinishingtext
+	* @return string
 	*/
-	public function getFinishingtext(){
+	public function getFinishingtext(): string {
 		return $this->m_strFinishingtext;
 	}
 	
 	/**
 	 * Check if the guessed letters are correct.
-	 * @param array $i_arrArguments Array with the guessed letters
-	 * @param \Loss\Glmorphquiz\Controller\MorphingQuizController $i_objMorphQuizController
-	 * @param boolean True if the last word is shown by default.
+	 * @param array<string, string> $i_arrArguments Array with the guessed letters
+	 * @param MorphingQuizController $i_objMorphQuizController
+	 * @param bool $i_blnShowLast True if the last word is shown by default.
 	 */
-	public function checkLetters(array $i_arrArguments, 
-								 \Loss\Glmorphquiz\Controller\MorphingQuizController $i_objMorphQuizController,
-								 $i_blnShowLast) {
+	public function checkLetters(array $i_arrArguments, MorphingQuizController $i_objMorphQuizController, bool $i_blnShowLast): void {
 		// the current word in edit mode
 		/* @var $l_objWord \Loss\Glmorphquiz\Domain\Model\Word */
 		$l_objWord = NULL;
@@ -317,7 +318,7 @@ class MorphQuiz {
 															  MorphingQuizController::c_strExtensionName
 					   										 );
 			// show the message
-			$i_objMorphQuizController->addFlashMessage($l_strMsgText, '', AbstractMessage::INFO, TRUE);
+			$i_objMorphQuizController->addFlashMessage($l_strMsgText, '', ContextualFeedbackSeverity::INFO, TRUE);
 			
 			// change the score
 			$this->setScrore($this->getScore() - $l_objWord->getMinus_points());
@@ -336,7 +337,7 @@ class MorphQuiz {
 															  MorphingQuizController::c_strExtensionName,
 					   										  array($l_intDifferentLetters) );
 			// show the message
-			$i_objMorphQuizController->addFlashMessage($l_strMsgText, '', AbstractMessage::INFO, TRUE);
+			$i_objMorphQuizController->addFlashMessage($l_strMsgText, '', ContextualFeedbackSeverity::INFO, TRUE);
 		}
 		
 		// if all ansers are correct
@@ -346,7 +347,7 @@ class MorphQuiz {
 															MorphingQuizController::c_strExtensionName
 					   										 );
 			// show the message
-			$i_objMorphQuizController->addFlashMessage($l_strMsgText, '', AbstractMessage::INFO, TRUE);
+			$i_objMorphQuizController->addFlashMessage($l_strMsgText, '', ContextualFeedbackSeverity::INFO, TRUE);
 			
 			// change the score
 			$this->setScrore($this->getScore() + $l_objWord->getPoints());
@@ -358,16 +359,15 @@ class MorphQuiz {
 	
 	/**
 	 * Solve the current word.
-	 * @param boolean True if the last word is shown by default.
-	 * @return boolean True if the last word is reached.
+	 * @param bool $i_blnShowLast True if the last word is shown by default.
 	 */
-	public function solveWord($i_blnShowLast) {
+	public function solveWord(bool $i_blnShowLast): void {
 		
 		// the count of the words
 		$l_intWordCount = 0;
 		
 		// unset the input mode for the current word in input mode
-		$this->setInputMode4Word(FALSE);
+		$this->setInputMode4Word(false);
 		// go to the next word
 		$this->setWordIndex($this->getWordIndex() + 1);
 		
@@ -383,27 +383,27 @@ class MorphQuiz {
 		
 		// if this was the last word
 		if ($this->getWordIndex() == $l_intWordCount) {
-			$this->setLastWord(TRUE);
+			$this->setLastWord(true);
 				
 			// if this is still not the last word
 		} else {
 			// activate the input mode for this word
-			$this->setInputMode4Word(TRUE);
+			$this->setInputMode4Word(true);
 		}
 	}
 	
 	/**
 	 * Set or unset the input mode for all letters of the current word.
-	 * @param boolean $i_blnInputMode
+	 * @param bool $i_blnInputMode
 	 */
-	protected function setInputMode4Word($i_blnInputMode) {
+	protected function setInputMode4Word(bool $i_blnInputMode): void {
 		// the current word in edit mode
 		/* @var $l_objWord \Loss\Glmorphquiz\Domain\Model\Word */
-		$l_objWord = NULL;
+		$l_objWord = null;
 		
 		// the current letter
 		/* @var $l_objLetter \Loss\Glmorphquiz\Domain\Model\Letter */
-		$l_objLetter = NULL;
+		$l_objLetter = null;
 		
 		// the count of the letters
 		$l_intLetterCount = 0;
@@ -440,10 +440,10 @@ class MorphQuiz {
 	
 	/**
 	 * Returns a word of the object storage by an index
-	 * @param integer $i_intIndex
-	 * @return \Loss\Glmorphquiz\Domain\Model\Word
+	 * @param int $i_intIndex
+	 * @return \Loss\Glmorphquiz\Domain\Model\Word|null
 	 */
-	protected function getWordByIndex($i_intIndex) {
+	protected function getWordByIndex(int $i_intIndex): ?\Loss\Glmorphquiz\Domain\Model\Word {
 	
 		// the returning word
 		/* @var $l_objWord \Loss\Glmorphquiz\Domain\Model\Word */
@@ -469,32 +469,30 @@ class MorphQuiz {
 	/**
 	* Sets the m_intScore
 	*
-	* @param integer $i_intScore
+	* @param int $i_intScore
 	* @return void
 	*/
-	public function setScrore($i_intScore){
+	public function setScrore(int $i_intScore): void {
 		$this->m_intScore = $i_intScore;
 	}
 	
 	/**
 	* Returns the m_intScore
 	*
-	* @return integer $m_intScore
+	* @return int
 	*/
-	public function getScore(){
+	public function getScore(): int {
 		return $this->m_intScore;
 	}
 	
 	/**
 	 * Check if between the both letter bunches has only changed one word.
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $i_objLetters1
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $i_objLetters2
-	 * @param boolean If True (default) than check the correct values otherwise check the value property
-	 * @return integer Number of different letters
+	 * @param \Loss\Glmorphquiz\Domain\Model\Word $i_objWord1
+	 * @param \Loss\Glmorphquiz\Domain\Model\Word $i_objWord2
+	 * @param bool $i_blnCorrectValue If True (default) than check the correct values otherwise check the value property
+	 * @return int Number of different letters
 	 */
-	public function check4letterChangings(	\Loss\Glmorphquiz\Domain\Model\Word $i_objWord1,
-											\Loss\Glmorphquiz\Domain\Model\Word $i_objWord2,
-											$i_blnCorrectValue = TRUE) {
+	public function check4letterChangings(\Loss\Glmorphquiz\Domain\Model\Word $i_objWord1, \Loss\Glmorphquiz\Domain\Model\Word $i_objWord2, bool $i_blnCorrectValue = true): int {
 	
 		// the letter of the first word
 		/* @var $l_objLetter1 \Loss\Glmorphquiz\Domain\Model\Letter */
@@ -548,10 +546,10 @@ class MorphQuiz {
 	
 	/**
 	 * Compares two MorphQuiz if they are the same.
-	 * @param \Loss\Glmorphquiz\Domain\Model\MorphQuiz $i_objMorphQuiz	The MorphQuiz which should be compared with this MorphQuiz
-	 * @return boolean Returns True if both are the same.
+	 * @param MorphQuiz $i_objMorphQuiz The MorphQuiz which should be compared with this MorphQuiz
+	 * @return bool Returns True if both are the same.
 	 */
-	public function compare(\Loss\Glmorphquiz\Domain\Model\MorphQuiz $i_objMorphQuiz) {
+	public function compare(MorphQuiz $i_objMorphQuiz): bool {
 
 		// the own current word
 		/* @var $l_objWordOwn \Loss\Glmorphquiz\Domain\Model\Word */

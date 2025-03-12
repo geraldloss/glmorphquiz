@@ -1,9 +1,12 @@
 <?php
+declare(strict_types=1);
 namespace Loss\Glmorphquiz\Domain\Repository;
 
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\LanguageAspect;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 
 /***************************************************************
  *
@@ -38,16 +41,15 @@ class FinishingtextRepository extends \TYPO3\CMS\Extbase\Persistence\Repository 
 	/**
 	 * Get all the finishing text for the given uids
 	 * @param string $i_strUids The uids comma separated
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+	 * @return ObjectStorage<\Loss\Glmorphquiz\Domain\Model\Finishingtext>
 	 */
-	public function getFinishingtexts($i_strUids) {
+	public function getFinishingtexts(string $i_strUids): ObjectStorage {
 		// the returning ObjectStorage
-		/* @var $l_objObjectStorage  \TYPO3\CMS\Extbase\Persistence\ObjectStorage */
-		$l_objObjectStorage = $this->objectManager->get('TYPO3\CMS\Extbase\Persistence\ObjectStorage');
+		$l_objObjectStorage = GeneralUtility::makeInstance(ObjectStorage::class);
 		
 		// Object with the result of the query 
 		/* @var $l_objResult  \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult */
-		$l_objResult = NULL;
+		$l_objResult = null;
 		
 		// The query object
 		/* @var $l_objQuery  \TYPO3\CMS\Extbase\Persistence\QueryInterface */
@@ -58,9 +60,10 @@ class FinishingtextRepository extends \TYPO3\CMS\Extbase\Persistence\Repository 
 		$l_objFinishingText = null;
 		
 		$l_objQuery = $this->createQuery();
-		// dont take the data only from one single sys-folder
-		// we like to get the pairs data from alle pages where pairs extists
-		$l_objQuery->getQuerySettings()->setRespectStoragePage(FALSE);
+		
+		// don't take the data only from one single sys-folder
+		// we like to get the pairs data from all pages where pairs exist
+		$l_objQuery->getQuerySettings()->setRespectStoragePage(false);
 		
 		// get language dependend aspect
 		/* @var LanguageAspect $languageAspect */

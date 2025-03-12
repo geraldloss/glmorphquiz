@@ -1,19 +1,19 @@
 <?php
-if (!defined('TYPO3_MODE')) {
-	die('Access denied.');
+if (!defined('TYPO3')) {
+    die('Do not access the file ext_localconf.php directly.');
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Loss.glmorphquiz',
+	'Glmorphquiz',
 	'Pi1',
-	array(
+	[
 		\Loss\Glmorphquiz\Controller\MorphingQuizController::class => 'list,response',
 		
-	),
+	],
 	// non-cacheable actions
-	array(
+	[
 	    \Loss\Glmorphquiz\Controller\MorphingQuizController::class => 'list,response',	
-	)
+	]
 );
 
 // register new content element wizard

@@ -1,7 +1,8 @@
 <?php
-if (!defined ('TYPO3_MODE')) {
-	die ('Access denied.');
+if (!defined('TYPO3')) {
+    die('Do not access the file tx_glmorphquiz_domain_model_finishingtext.php directly.');
 }
+
 
 $tx_glmorphquiz_domain_model_finishingtext = array(
     'ctrl' => array(
@@ -23,6 +24,9 @@ $tx_glmorphquiz_domain_model_finishingtext = array(
         ),
         'searchFields' => 'minpoints,text,',
         'iconfile' => 'EXT:glmorphquiz/Resources/Public/Icons/tx_glmorphquiz_domain_model_finishingtext.gif',
+        'security' => [
+            'ignoreRootLevel' => 1
+        ],
     ),
 	'types' => array(
 	    '1' => array(  'showitem' => 'hidden,--palette--;;1, name, minpoints, text,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace Loss\Glmorphquiz\Domain\Model;
 
 use TYPO3\CMS\Extbase\Annotation\Validate;
@@ -38,44 +39,44 @@ class Finishingtext extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * minimum points
 	 *
-	 * @var integer
-	 * @TYPO3\CMS\Extbase\Annotation\Validate("Integer")
+	 * @var int
+	 * @Validate("Integer")
 	 */
-	protected $minpoints;
+	protected int $minpoints;
 
 	/**
 	 * Text to be displayed if the minimum points are reached
 	 *
 	 * @var string
-	 * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+	 * @Validate("NotEmpty")
 	 */
-	protected $text;
+	protected string $text;
 
 	/**
 	 * Returns the minpoints
 	 *
-	 * @return integer $minpoints
+	 * @return int
 	 */
-	public function getMinpoints() {
+	public function getMinpoints(): int {
 		return $this->minpoints;
 	}
 
 	/**
 	 * Sets the minpoints
 	 *
-	 * @param integer $minpoints
+	 * @param int $minpoints
 	 * @return void
 	 */
-	public function setMinpoints($minpoints) {
+	public function setMinpoints(int $minpoints): void {
 		$this->minpoints = $minpoints;
 	}
 
 	/**
 	 * Returns the text
 	 *
-	 * @return string $text
+	 * @return string
 	 */
-	public function getText() {
+	public function getText(): string {
 		return $this->text;
 	}
 
@@ -85,7 +86,7 @@ class Finishingtext extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param string $text
 	 * @return void
 	 */
-	public function setText($text) {
+	public function setText(string $text): void {
 		$this->text = $text;
 	}
 
