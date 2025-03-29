@@ -1,13 +1,13 @@
 # ==============================================
 # FE-Plugin configuration for EXT:glmorphquiz
 # ==============================================
-tt_content.list.20.glmorphquiz_pi1 = USER
-tt_content.list.20.glmorphquiz_pi1 {
+tt_content.list.20.glmorphquiz_morphquiz = USER
+tt_content.list.20.glmorphquiz_morphquiz {
     userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
     extensionName = Glmorphquiz
-    pluginName = Pi1
+    pluginName = Morphquiz
     vendorName = Loss
-    controller = Glmorphquiz
+    controller = MorphingQuiz
     action = list
 }
 

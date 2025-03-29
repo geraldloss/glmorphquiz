@@ -42,9 +42,11 @@
 			<trans-unit id="frontend_default_finishingtext">
 				<source><![CDATA[You have finished the game.]]></source>
 			</trans-unit>
-
 			<trans-unit id="frontend_empty">
 				<source><![CDATA[]]></source>
+			</trans-unit>
+			<trans-unit id="plugin_name">
+				<source><![CDATA[Morphing Quiz]]></source>
 			</trans-unit>
 		</body>
 	</file>

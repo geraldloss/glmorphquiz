@@ -68,7 +68,7 @@ class FinishingtextRepository extends \TYPO3\CMS\Extbase\Persistence\Repository 
 		// get language dependend aspect
 		/* @var LanguageAspect $languageAspect */
 		$languageAspect = GeneralUtility::makeInstance(Context::class)->getAspect('language');
-		$l_objQuery->getQuerySettings()->setLanguageUid($languageAspect->getId());
+		$l_objQuery->getQuerySettings()->setLanguageAspect($languageAspect);
 		
 		// get all finishingtexts with the uids 
 		$l_objQuery->matching($l_objQuery->in('uid', explode(',', $i_strUids)));

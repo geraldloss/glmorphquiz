@@ -5,7 +5,7 @@ if (!defined('TYPO3')) {
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'Glmorphquiz',
-	'Pi1',
+	'Morphquiz',
 	[
 		\Loss\Glmorphquiz\Controller\MorphingQuizController::class => 'list,response',
 		
@@ -13,13 +13,10 @@ if (!defined('TYPO3')) {
 	// non-cacheable actions
 	[
 	    \Loss\Glmorphquiz\Controller\MorphingQuizController::class => 'list,response',	
-	]
+	],
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );
 
-// register new content element wizard
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('
-    <INCLUDE_TYPOSCRIPT: source="FILE:EXT:glmorphquiz/Configuration/TSconfig/ContentElementWizard.txt">
-');
 
 if (class_exists('TYPO3\\CMS\\Core\\Imaging\\IconRegistry')) {
     // Initiate

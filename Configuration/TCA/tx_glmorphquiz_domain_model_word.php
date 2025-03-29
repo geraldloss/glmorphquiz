@@ -9,7 +9,6 @@ $tx_glmorphquiz_domain_model_word = array(
         'label' => 'name',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
         'dividers2tabs' => TRUE,
         'sortby' => 'sorting',
         'languageField' => 'sys_language_uid',
@@ -31,45 +30,33 @@ $tx_glmorphquiz_domain_model_word = array(
 		'1' => array( 'showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, --palette--;;1, name, value, mask, next_word, 
 									--div--;LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_db.xlf:tx_glmorphquiz_domain_model_word.tabpoints, points, minus_points,
 		 							--div--;LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_db.xlf:tx_glmorphquiz_domain_model_word.tabadvanced, fontsize, heigth_letter, width_letter, width_letter_offset, animation_speed,
-									--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime' ),
+									--div--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:be_users.tabs.access, starttime, endtime' ),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
 	),
 	'columns' => array(
 	
-//      for Typo3 11.5 switch to this syntax. But in the moment it breakks with 10.4
-// 		'sys_language_uid' => array(
-// 			'exclude' => 1,
-// 			'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.language',
-// 		    'config' => array(
-// 		        'type'       => 'language',
-// 		    ),
-// 		),
-	    'sys_language_uid' => array(
-	        'exclude' => 1,
-	        'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.language',
-	        'config' => array(
-	            'type' => 'select',
-	            'foreign_table' => 'sys_language',
-	            'foreign_table_where' => 'ORDER BY sys_language.title',
-	            'renderType' => 'selectSingle',
-	            'items' => array(
-	                array('LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages', -1),
-	                array('LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.default_value', 0)
-	            ),
-	            'default' => 0
-	        ),
-	    ),
+     	// for Typo3 11.5 switch to this syntax. But in the moment it breakks with 10.4
+		'sys_language_uid' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
+		    'config' => array(
+		        'type'       => 'language',
+		    ),
+		),
 	    'l10n_parent' => array(
 			'displayCond' => 'FIELD:sys_language_uid:>:0',
-			'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
+			'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
 			'config' => array(
 				'type' => 'select',
 			    'renderType' => 'selectSingle',
-				'items' => array(
-					array('', 0),
-				),
+				'items' => [
+					[
+						'label' => '',
+						'value' => 0
+					]
+				],
 				'foreign_table' => 'tx_glmorphquiz_domain_model_word',
 				'foreign_table_where' => 'AND tx_glmorphquiz_domain_model_word.pid=###CURRENT_PID### AND tx_glmorphquiz_domain_model_word.sys_language_uid IN (-1,0)',
 			),
@@ -81,7 +68,7 @@ $tx_glmorphquiz_domain_model_word = array(
 		),
 
 		't3ver_label' => array(
-			'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.versionLabel',
+			'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.versionLabel',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
@@ -91,45 +78,31 @@ $tx_glmorphquiz_domain_model_word = array(
 	
 		'hidden' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
+		    'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
 			'config' => array(
 				'type' => 'check',
 			),
 		),
 		'starttime' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
+			'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
 			'config' => array(
-				'type' => 'input',
-				'size' => 13,
-				'eval' => 'datetime,int',
-				'checkbox' => 0,
+				'type' => 'datetime',
 				'default' => 0,
-				'range' => array(
-					'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-				),
 			    'behaviour' => array(
 			        'allowLanguageSynchronization' => TRUE
 			    ),
-			    'renderType' => 'inputDateTime',
 			),
 		),
 		'endtime' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
+			'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
 			'config' => array(
-				'type' => 'input',
-				'size' => 13,
-				'eval' => 'datetime,int',
-				'checkbox' => 0,
+				'type' => 'datetime',
 				'default' => 0,
-				'range' => array(
-					'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-				),
 			    'behaviour' => array(
 			        'allowLanguageSynchronization' => TRUE
 			    ),
-			    'renderType' => 'inputDateTime',
 			),
 		),
 
@@ -139,7 +112,8 @@ $tx_glmorphquiz_domain_model_word = array(
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
-				'eval' => 'trim,required'
+				'eval' => 'trim',
+				'required' => true
 			),
 		),
 		'value' => array(
@@ -148,54 +122,55 @@ $tx_glmorphquiz_domain_model_word = array(
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
-				'eval' => 'required, trim, upper',
+				'eval' => 'trim, upper',
+				'required' => true
 			),
 		),
 		'mask' => array(		
 			'exclude' => 0,		
 			'label' => 'LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_db.xlf:tx_glmorphquiz_domain_model_word.mask',
 			'config' => array(
-				'type' => 'input',	
-				'size' => '255',	
-				'eval' => 'int',
+				'type' => 'number',
+				'format' => 'integer',
+				'size' => 255,
 			)
 		),
 		'next_word' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_db.xlf:tx_glmorphquiz_domain_model_word.next_word',
 			'config' => array(
-			'type' => 'select',
-			'renderType' => 'selectSingle',
-			'foreign_table' => 'tx_glmorphquiz_domain_model_word',
-			'foreign_table_where' => 'AND tx_glmorphquiz_domain_model_word.uid<>###THIS_UID### ORDER BY name ASC',
-			'size' => 1,
-			'items' => array(
-					array(
-							'LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_db.xlf:tx_glmorphquiz_domain_model_word.empty',
-							0
-					)
-			),
-			'maxitems' => 1,
-			'default'  => 0
+				'type' => 'select',
+				'renderType' => 'selectSingle',
+				'foreign_table' => 'tx_glmorphquiz_domain_model_word',
+				'foreign_table_where' => 'AND tx_glmorphquiz_domain_model_word.uid<>###THIS_UID### ORDER BY name ASC',
+				'size' => 1,
+				'items' => [
+					[
+						'label' => 'LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_db.xlf:tx_glmorphquiz_domain_model_word.empty',
+						'value' => 0
+					]
+				],
+				'maxitems' => 1,
+				'default' => 0
 			)
 		),
 		'fontsize' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_db.xlf:tx_glmorphquiz_domain_model_word.fontsize',
 			'config' => array(
-					'type' => 'input',
-					'size' => 4,
-					'eval' => 'int',
-					'default' => 0
+				'type' => 'number',
+				'format' => 'integer',
+				'size' => 4,
+				'default' => 0
 			),
 		),
 		'heigth_letter' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_db.xlf:tx_glmorphquiz_domain_model_word.heigth_letter',
 			'config' => array(
-				'type' => 'input',
+				'type' => 'number',
+				'format' => 'integer',
 				'size' => 4,
-				'eval' => 'int',
 				'default' => 0
 			),
 		),
@@ -203,9 +178,9 @@ $tx_glmorphquiz_domain_model_word = array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_db.xlf:tx_glmorphquiz_domain_model_word.width_letter',
 			'config' => array(
-				'type' => 'input',
+				'type' => 'number',
+				'format' => 'integer',
 				'size' => 4,
-				'eval' => 'int',
 				'default' => 0
 			),
 		),
@@ -213,9 +188,9 @@ $tx_glmorphquiz_domain_model_word = array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_db.xlf:tx_glmorphquiz_domain_model_word.width_letter_offset',
 			'config' => array(
-				'type' => 'input',
+				'type' => 'number',
+				'format' => 'integer',
 				'size' => 4,
-				'eval' => 'int',
 				'default' => 0
 			),
 		),
@@ -223,9 +198,9 @@ $tx_glmorphquiz_domain_model_word = array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_db.xlf:tx_glmorphquiz_domain_model_word.firstcol_width',
 			'config' => array(
-				'type' => 'input',
+				'type' => 'number',
+				'format' => 'integer',
 				'size' => 4,
-				'eval' => 'int',
 				'default' => 0
 			),
 		),
@@ -233,9 +208,9 @@ $tx_glmorphquiz_domain_model_word = array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_db.xlf:tx_glmorphquiz_domain_model_word.arrow_width',
 			'config' => array(
-				'type' => 'input',
+				'type' => 'number',
+				'format' => 'integer',
 				'size' => 4,
-				'eval' => 'int',
 				'default' => 0
 			),
 		),
@@ -243,9 +218,9 @@ $tx_glmorphquiz_domain_model_word = array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_db.xlf:tx_glmorphquiz_domain_model_word.animation_speed',
 			'config' => array(
-				'type' => 'input',
+				'type' => 'number',
+				'format' => 'integer',
 				'size' => 4,
-				'eval' => 'int',
 				'default' => 0
 			),
 		),
@@ -253,9 +228,9 @@ $tx_glmorphquiz_domain_model_word = array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_db.xlf:tx_glmorphquiz_domain_model_word.points',
 			'config' => array(
-				'type' => 'input',
+				'type' => 'number',
+				'format' => 'integer',
 				'size' => 4,
-				'eval' => 'int',
 				'default' => 0
 			),
 		),
@@ -263,9 +238,9 @@ $tx_glmorphquiz_domain_model_word = array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_db.xlf:tx_glmorphquiz_domain_model_word.minus_points',
 			'config' => array(
-				'type' => 'input',
+				'type' => 'number',
+				'format' => 'integer',
 				'size' => 4,
-				'eval' => 'int',
 				'default' => 0
 			),
 		),

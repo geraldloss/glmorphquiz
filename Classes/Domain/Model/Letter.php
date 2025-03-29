@@ -281,7 +281,7 @@ class Letter {
 		if ($this->getWord()->getInputmode() ){
 //			&& !$this->getLast()) {
 		    
-			$lv_strReturn = "onKeyDown=\"glmorphKeyDown(event, 'tx_glmorphquiz_pi1[" . $this->getName() . "]')\"";
+			$lv_strReturn = "onKeyDown=\"glmorphKeyDown(event, 'tx_glmorphquiz_morphquiz[" . $this->getName() . "]')\"";
 		}
 		return $lv_strReturn;
 	}
@@ -299,9 +299,9 @@ class Letter {
 		if ($this->getWord()->getInputmode() ){
 //			&& !$this->getLast()) {
 		    
-			$lv_strReturn = "onKeyUp=\"glmorphKeyUp(event, 'tx_glmorphquiz_pi1[" . $this->getName() . "]'";
-			$lv_strReturn = $lv_strReturn . ", 'tx_glmorphquiz_pi1[" . $this->getNextName() . "]'";
-			$lv_strReturn = $lv_strReturn . ", 'tx_glmorphquiz_pi1[" . $this->getBevoreName() . "]')\"";
+			$lv_strReturn = "onKeyUp=\"glmorphKeyUp(event, 'tx_glmorphquiz_morphquiz[" . $this->getName() . "]'";
+			$lv_strReturn = $lv_strReturn . ", 'tx_glmorphquiz_morphquiz[" . $this->getNextName() . "]'";
+			$lv_strReturn = $lv_strReturn . ", 'tx_glmorphquiz_morphquiz[" . $this->getBevoreName() . "]')\"";
 		}
 		return $lv_strReturn;
 	}

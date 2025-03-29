@@ -60,6 +60,10 @@
 				<source><![CDATA[]]></source>
 				<target><![CDATA[]]></target>
 			</trans-unit>
+			<trans-unit id="plugin_name">
+				<source><![CDATA[Morphing Quiz]]></source>
+				<target><![CDATA[Verwandlungsraetsel]]></target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

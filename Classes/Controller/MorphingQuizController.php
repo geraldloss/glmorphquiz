@@ -69,7 +69,7 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 	 * The Plugin Name
 	 * @var \string
 	 */
-	const c_strPluginName = 'pi1';
+	const c_strPluginName = 'morphquiz';
 	
 	/**
 	 * The session name of the morphing quiz game. 
@@ -122,7 +122,7 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 	 * All actions which we need to perform before avery other action
 	 * @see \TYPO3\CMS\Extbase\Mvc\Controller\ActionController::initializeAction()
 	 */
-	protected function initializeAction() {
+	protected function initializeAction(): void {
 		// path to the css file
 		$pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
 		$pageRenderer->addCssFile($this->getCssFile());
@@ -149,13 +149,14 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 		$l_strTitleText = '';
 		
 		// try to get the current context from the session
-		$l_objMorphingQuizData = $GLOBALS['TSFE']->fe_user->getKey('ses', self::c_strMorphQuizSessionName);
+		/** @var \TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication $frontendUser */
+		$frontendUser = $this->request->getAttribute('frontend.user');
+		$l_objMorphingQuizData = $frontendUser->getKey('ses', self::c_strMorphQuizSessionName);
 		$l_objMorphingQuizData = $this->fixSessionObject($l_objMorphingQuizData);
 		
 		// delete the game context from the session
-		$GLOBALS['TSFE']->fe_user->setAndSaveSessionData(
-				self::c_strMorphQuizSessionName,
-				NULL );
+		$frontendUser->setAndSaveSessionData(self::c_strMorphQuizSessionName, null);
+
 		
 		// if this is the first call of this action
 		if ($l_objMorphingQuizData === NULL) {
@@ -202,16 +203,22 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 		$l_arrArgs = array();
 		
 		$l_arrArgs = $this->request->getArguments();
-		
 		// build the object with all morphing quiz data
 		$l_objMorphingQuizData = $this->createMorpingQuizData((int)$l_arrArgs['wordIndex'], (int)$l_arrArgs['score']);
 		
 		
 		// if button next is pressed
 		if (isset($l_arrArgs['next'])) {
+			// Sicherstellen, dass die Buchstaben-Eingaben existieren
+			$letterArgs = [];
+			foreach ($l_arrArgs as $key => $value) {
+				if (str_starts_with($key, 'letter')) {
+					$letterArgs[$key] = $value;
+				}
+			}
 			
 			// Check if the word is correct answered
-			$l_objMorphingQuizData->checkLetters($l_arrArgs, $this, (bool)$this->settings['show_last']);
+			$l_objMorphingQuizData->checkLetters($letterArgs, $this, (bool)$this->settings['show_last']);
 						    
 		// if the button solve is pressed
 		} else if (isset($l_arrArgs['solve'])){
@@ -234,9 +241,10 @@ class MorphingQuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 		}
 		
 		// store the current morphing quiz game context
-		$GLOBALS['TSFE']->fe_user->setAndSaveSessionData(
-				self::c_strMorphQuizSessionName,
-				$l_objMorphingQuizData );
+		/** @var \TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication $frontendUser */
+		$frontendUser = $this->request->getAttribute('frontend.user');
+		// store the current morphing quiz game context
+		$frontendUser->setAndSaveSessionData(self::c_strMorphQuizSessionName, $l_objMorphingQuizData);
 		
 		// redirect to the list action
 		return $this->redirect('list');

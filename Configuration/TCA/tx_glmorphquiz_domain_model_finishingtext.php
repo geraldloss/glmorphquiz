@@ -10,7 +10,6 @@ $tx_glmorphquiz_domain_model_finishingtext = array(
         'label' => 'name',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
         'dividers2tabs' => TRUE,
         'origUid' => 't3_origuid',
         'languageField' => 'sys_language_uid',
@@ -29,45 +28,33 @@ $tx_glmorphquiz_domain_model_finishingtext = array(
         ],
     ),
 	'types' => array(
-	    '1' => array(  'showitem' => 'hidden,--palette--;;1, name, minpoints, text,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'
+	    '1' => array(  'showitem' => 'hidden,--palette--;;1, name, minpoints, text,--div--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:be_users.tabs.access,starttime, endtime'
 	   ),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
 	),
 	'columns' => array(
-//      for Typo3 11.5 switch to this syntax. But in the moment it breakks with 10.4
-// 		'sys_language_uid' => array(
-// 			'exclude' => 1,
-// 			'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.language',
-// 		    'config' => array(
-// 		        'type'       => 'language',
-// 		    ),
-// 		),
-	    'sys_language_uid' => array(
-	        'exclude' => 1,
-	        'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.language',
-	        'config' => array(
-	            'type' => 'select',
-	            'foreign_table' => 'sys_language',
-	            'foreign_table_where' => 'ORDER BY sys_language.title',
-	            'renderType' => 'selectSingle',
-	            'items' => array(
-	                array('LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages', -1),
-	                array('LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.default_value', 0),
-	            ),
-	            'default' => 0
-	        ),
-	    ),
+     	// for Typo3 11.5 switch to this syntax. But in the moment it breakks with 10.4
+		'sys_language_uid' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
+		    'config' => array(
+		        'type'       => 'language',
+		    ),
+		),
 		'l10n_parent' => array(
 			'displayCond' => 'FIELD:sys_language_uid:>:0',
-			'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
+			'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
 			'config' => array(
 			    'type' => 'select',
 			    'renderType' => 'selectSingle',
-				'items' => array(
-					array('', 0),
-				),
+				'items' => [
+					[
+						'label' => '',
+						'value' => 0
+					]
+				],
 				'foreign_table' => 'tx_glmorphquiz_domain_model_finishingtext',
 				'foreign_table_where' => 'AND tx_glmorphquiz_domain_model_finishingtext.pid=###CURRENT_PID### AND tx_glmorphquiz_domain_model_finishingtext.sys_language_uid IN (-1,0)',
 			),
@@ -78,7 +65,7 @@ $tx_glmorphquiz_domain_model_finishingtext = array(
 			),
 		),
 		't3ver_label' => array(
-			'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.versionLabel',
+			'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.versionLabel',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
@@ -87,45 +74,31 @@ $tx_glmorphquiz_domain_model_finishingtext = array(
 		),
 		'hidden' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
+			'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
 			'config' => array(
 				'type' => 'check',
 			),
 		),
 		'starttime' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
+			'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
 			'config' => array(
-				'type' => 'input',
-				'size' => 13,
-				'eval' => 'datetime,int',
-				'checkbox' => 0,
+				'type' => 'datetime',
 				'default' => 0,
-				'range' => array(
-					'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-				),
 			    'behaviour' => array(
 			        'allowLanguageSynchronization' => TRUE
 			    ),
-			    'renderType' => 'inputDateTime',
 			),
 		),
 		'endtime' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
+			'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
 			'config' => array(
-				'type' => 'input',
-				'size' => 13,
-				'eval' => 'datetime,int',
-				'checkbox' => 0,
+				'type' => 'datetime',
 				'default' => 0,
-				'range' => array(
-					'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-				),
 			    'behaviour' => array(
 			        'allowLanguageSynchronization' => TRUE
 			    ),
-			    'renderType' => 'inputDateTime',
 			),
 		),
 		'name' => array(
@@ -134,16 +107,17 @@ $tx_glmorphquiz_domain_model_finishingtext = array(
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
-				'eval' => 'trim,required'
+				'eval' => 'trim',
+				'required' => true
 			),
 		),	
 		'minpoints' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:glmorphquiz/Resources/Private/Language/locallang_db.xlf:tx_glmorphquiz_domain_model_finishingtext.minpoints',
 			'config' => array(
-				'type' => 'input',
+				'type' => 'number',
+				'format' => 'integer',
 				'size' => 4,
-				'eval' => 'int'
 			),
 		),
 		'text' => array(

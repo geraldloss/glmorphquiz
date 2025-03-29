@@ -15,7 +15,7 @@
 		</ul>
 	</f:flashMessages>
 
-	<f:form id="tx_glmorphquiz_pi1_form"
+	<f:form id="tx_glmorphquiz_morphquiz_form"
 			action="response" controller="MorphingQuiz" 
 			arguments="{wordIndex: morphquiz.wordIndex, score: morphquiz.score}" method="post">
 		
@@ -25,7 +25,7 @@
 			// the input field with the keyDow event
 			var downField;
 			// get the form element
-			var form = document.getElementById("tx_glmorphquiz_pi1_form");
+			var form = document.getElementById("tx_glmorphquiz_morphquiz_form");
 						
 			function glmorphKeyDown(event, iv_c_currentFieldName){
 			    downField = form.elements[iv_c_currentFieldName];

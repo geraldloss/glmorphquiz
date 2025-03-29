@@ -2,7 +2,6 @@
 declare(strict_types=1);
 namespace Loss\Glmorphquiz\Domain\Model;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use Loss\Glmorphquiz\Controller\MorphingQuizController;
 use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
